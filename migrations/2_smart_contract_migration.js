@@ -1,5 +1,5 @@
-const SmartContract = artifacts.require("SmartContract");
+const TinyTurtles = artifacts.require('TinyTurtles');
 
 module.exports = function (deployer) {
-  deployer.deploy(SmartContract);
+	deployer.deploy(TinyTurtles);
 };

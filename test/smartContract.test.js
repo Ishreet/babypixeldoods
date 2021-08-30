@@ -1,24 +1,38 @@
-const SmartContract = artifacts.require("./SmartContract.sol");
+const { assert } = require('chai')
 
-require("chai").use(require("chai-as-promised")).should();
+const SmartContract = artifacts.require('./TinyTurtles.sol')
 
-contract("SmartContract", (accounts) => {
-  let smartContract;
+require('chai').use(require('chai-as-promised')).should()
 
-  before(async () => {
-    smartContract = await SmartContract.deployed();
-  });
+contract('SmartContract', (accounts) => {
+	let smartContract
 
-  describe("smartContract deployment", async () => {
-    it("deploys successfully", async () => {
-      const address = await smartContract.address;
-      assert.notEqual(address, 0x0);
-      assert.notEqual(address, "");
-    });
+	before(async () => {
+		smartContract = await SmartContract.deployed()
+	})
 
-    it("has correct name", async () => {
-      const name = await smartContract.name();
-      assert.equal(name, "Smart Contract");
-    });
-  });
-});
+	describe('deployment', async () => {
+		it('deploys successfully', async () => {
+			const address = await smartContract.address
+			assert.notEqual(address, 0x0)
+			assert.notEqual(address, '')
+			assert.notEqual(address, null)
+		})
+
+		it('has correct name', async () => {
+			const name = await smartContract.name()
+			assert.equal(name, 'Tiny Turtles')
+		})
+	})
+
+	describe('minting', async () => {
+		it('minted successfully', async () => {
+			const uri = 'https://example.com'
+			await smartContract.mint(accounts[0], uri)
+			const tokenURI = await smartContract.tokenURI(0)
+			const balanceOfOwner = await smartContract.balanceOf(accounts[0])
+			assert.equal(tokenURI, uri)
+			assert.equal(balanceOfOwner, 1)
+		})
+	})
+})

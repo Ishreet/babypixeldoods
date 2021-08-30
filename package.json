@@ -1,6 +1,6 @@
 {
-  "name": "frontend_base_dapp",
-  "version": "0.1.0",
+  "name": "Tiny Turtles",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@openzeppelin/contracts": "^4.2.0",
