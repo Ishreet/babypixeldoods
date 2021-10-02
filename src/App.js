@@ -5,17 +5,7 @@ import { connect } from './redux/blockchain/blockchainActions'
 import { fetchData } from './redux/data/dataActions'
 import * as s from './styles/globalStyles'
 import styled from 'styled-components'
-import { create } from 'ipfs-http-client'
-import SignatureCanvas from 'react-signature-canvas'
-import { Minimatch } from 'minimatch'
-import StackUtils from 'stack-utils'
-
-const ipfsClient = create({
-	host: 'ipfs.infura.io',
-	port: '5001',
-	protocol: 'https',
-	apiPath: '/api/v0',
-})
+const axios = require('axios')
 
 export const StyledButton = styled.button`
 	padding: 8px;
@@ -25,19 +15,27 @@ function App() {
 	const dispatch = useDispatch()
 	const blockchain = useSelector((state) => state.blockchain)
 	const data = useSelector((state) => state.data)
-	const elementRef = useRef()
-	const ipfsBaseUrl = 'https://ipfs.infura.io/ipfs/'
-	const name = 'TINY TURTLE'
-	const description = 'Minted to IPFS'
+	var numberOfTurtles = 0
 	const [loading, setLoading] = useState(false)
 	const [status, setStatus] = useState('')
 	const [NFTs, setNFTs] = useState([])
 
 	// add value to send ethereum; make it payable
-	const mint = (_uri) => {
+	const mint = (_numberOfTurtles) => {
 		blockchain.smartContract.methods
-			.mint(blockchain.account, _uri)
-			.send({ from: blockchain.account })
+			.getAllTokens()
+			.call()
+			.then((r) => console.log('r', r))
+
+		blockchain.smartContract.methods
+			.mint(_numberOfTurtles)
+			.send({
+				from: blockchain.account,
+				value: blockchain.web3.utils.toWei(
+					(0.06 * _numberOfTurtles).toString(),
+					'ether'
+				),
+			})
 			.once('error', (err) => {
 				console.error(err)
 				setLoading(false)
@@ -48,24 +46,15 @@ function App() {
 				setLoading(false)
 				dispatch(fetchData(blockchain.account))
 				setStatus('Successfully minting your NFT')
-				clearCanvas()
 			})
 	}
 
-	const createMetaDataAndMint = async (_name, _des, _imgBuffer) => {
+	const createMetaDataAndMint = async () => {
 		setLoading(true)
-		setStatus('Uploading to IPFS')
+		setStatus('Uploading')
 
 		try {
-			const addedImage = await ipfsClient.add(_imgBuffer)
-			const metaDataObj = {
-				name: _name,
-				description: _des,
-				image: ipfsBaseUrl + addedImage.path,
-			}
-			const addedMetaData = await ipfsClient.add(JSON.stringify(metaDataObj))
-			console.log(ipfsBaseUrl + addedMetaData.path)
-			mint(ipfsBaseUrl + addedMetaData.path)
+			mint(numberOfTurtles)
 		} catch (err) {
 			console.log(err)
 			setLoading(false)
@@ -73,23 +62,11 @@ function App() {
 		}
 	}
 
-	const startMintingProcess = () => {
-		// can add name, description here
-		createMetaDataAndMint(name, description, getImageData())
-	}
-
-	const getImageData = () => {
-		const canvasEl = elementRef.current
-		let dataURL = canvasEl.toDataURL('image/png')
-		const buffer = Buffer(dataURL.split(',')[1], 'base64')
-		return buffer
-	}
-
 	const fetchMetaDataForNFTs = () => {
 		setNFTs([])
 		data.allTokens.forEach((nft) => {
 			fetch(nft.uri)
-				.then((response) => response.json())
+				.then((response) => axios.get(response.url).then((r) => r.data))
 				.then((metadata) => {
 					setNFTs((prevState) => [
 						...prevState,
@@ -100,11 +77,6 @@ function App() {
 					console.error(err)
 				})
 		})
-	}
-
-	const clearCanvas = () => {
-		const canvasEl = elementRef.current
-		canvasEl.clear()
 	}
 
 	useEffect(() => {
@@ -160,52 +132,54 @@ function App() {
 					<s.SpacerLarge />
 					<s.Container fd={'row'} jc={'center'}>
 						<StyledButton
+							disabled={loading ? 1 : 0}
 							onClick={(e) => {
 								e.preventDefault()
-								startMintingProcess()
+								createMetaDataAndMint()
 							}}
 						>
 							MINT
 						</StyledButton>
 						<s.SpacerSmall />
-						<StyledButton
-							onClick={(e) => {
-								e.preventDefault()
-								clearCanvas()
-							}}
-						>
-							CLEAR
-						</StyledButton>
+
+						<form>
+							<input
+								type='number'
+								min='1'
+								max='20'
+								onChange={(e) => {
+									numberOfTurtles = parseInt(e.target.value)
+								}}
+							/>
+						</form>
+						<s.SpacerSmall />
 					</s.Container>
 
 					<s.SpacerLarge />
-					<SignatureCanvas
-						backgroundColor={'#73FEA4'}
-						canvasProps={{ width: 350, height: 350 }}
-						ref={elementRef}
-					/>
 					<s.SpacerLarge />
-					{data.loading ? (
-						<>
-							<s.SpacerSmall />
-							<s.TextDescription style={{ textAlign: 'center' }}>
-								loading...
-							</s.TextDescription>
-						</>
-					) : (
-						NFTs.map((nft, index) => {
-							return (
-								<s.Container key={index} style={{ padding: 16 }}>
-									<s.TextTitle>{nft.metadata.name}</s.TextTitle>
-									<img
-										alt={nft.metadata.name}
-										src={nft.metadata.image}
-										width={150}
-									/>
-								</s.Container>
-							)
-						})
-					)}
+					<s.Container fd={'row'} style={{ flexWrap: 'wrap' }}>
+						{data.loading ? (
+							<>
+								<s.SpacerSmall />
+								<s.TextDescription style={{ textAlign: 'center' }}>
+									loading...
+								</s.TextDescription>
+							</>
+						) : (
+							NFTs.map((nft, index) => {
+								return (
+									<s.Container key={index} style={{ padding: 16 }}>
+										<s.TextTitle>{nft.metadata.name}</s.TextTitle>
+										<img
+											alt={nft.metadata.name}
+											src={nft.metadata.image}
+											width={150}
+										/>
+									</s.Container>
+								)
+							})
+						)}
+					</s.Container>
 				</s.Container>
 			)}
 		</s.Screen>
