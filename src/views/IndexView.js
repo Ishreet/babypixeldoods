@@ -2,6 +2,7 @@
 
 import React from 'react'
 import { createScope, map, transformProxies } from './helpers'
+import ContactFormView from './ContactFormView'
 
 const scripts = [
   { loading: fetch("https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=6128132df241c2665299b003").then(body => body.text()), isAsync: false },
@@ -68,9 +69,7 @@ class IndexView extends React.Component {
             <div className="af-class-section af-class-wf-section"><img src="images/tinyturtles_logo.png" loading="lazy" width={291} sizes="(max-width: 479px) 100vw, 291px" srcSet="images/tinyturtles_logo-p-500.png 500w, images/tinyturtles_logo.png 1064w" alt className="af-class-image" /></div>
             <div className="af-class-section-2 af-class-wf-section"><img src="images/thing_bulma.png" loading="lazy" sizes="100vw" srcSet="images/thing_bulma-p-500.png 500w, images/thing_bulma-p-800.png 800w, images/thing_bulma-p-1080.png 1080w, images/thing_bulma.png 2112w" alt className="af-class-image-3" /></div>
             <div className="af-class-section-3 af-class-wf-section">
-              <div className="af-class-div-block-3">
-                <a href="#" className="af-class-button w-button"> Mint </a>
-              </div>
+              <ContactFormView.Controller />
               <div className="af-class-div-block-20">
                 <div className="af-class-text-block-4">Launch date coming soon...</div>
               </div>
