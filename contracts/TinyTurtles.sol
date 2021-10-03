@@ -9,31 +9,55 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 
 contract TinyTurtles is ERC721Enumerable, Ownable {
     using Counters for Counters.Counter;
-
     using Strings for uint256;
     using SafeMath for uint256;
 
-    string public TT_PROVENANCE = "";
     uint256 public constant NFT_PRICE = 60000000000000000; // 0.06 ETH
     uint256 public constant MAX_NFT_PURCHASE = 20;
     uint256 public MAX_SUPPLY = 10000;
-    bool public saleIsActive = true;
+    uint256 public nftPerAddressLimit = 3;
 
-    string private _baseURIExtended;
+    bool public paused = false;
+    bool public onlyWhitelisted = true;
+    bool public revealed = true;
+
+    address[] public whitelistAddresses;
     mapping(uint256 => string) _tokenURIs;
-    Counters.Counter _tokenIds;
 
-    uint256 fee = 0.06 ether;
+    string public notRevealedUri;
+    string private _baseURIExtended;
+
+    Counters.Counter _tokenIds;
 
     struct RenderToken {
         uint256 id;
         string uri;
     }
-
+    
     constructor() ERC721("Tiny Turtles", "TT") {}
 
-    function flipSaleState() public onlyOwner {
-        saleIsActive = !saleIsActive;
+    function getOwner() public view virtual returns (address) {
+        return owner();
+    }
+
+    function getBalance() public view returns (uint256) {
+        return address(this).balance;
+    }
+
+    function getwhitelistAddresses() public view returns (address[] memory) {
+        return whitelistAddresses;
+    }
+
+    function getTotalSupply() public view returns (uint256) {
+        return totalSupply();
+    }
+
+    function getBaseURI() internal view virtual returns (string memory) {
+        return _baseURIExtended;
+    }
+
+    function pause(bool _state) public onlyOwner {
+        paused = _state;
     }
 
     function setBaseURI(string memory baseURI_) external onlyOwner {
@@ -51,10 +75,6 @@ contract TinyTurtles is ERC721Enumerable, Ownable {
         _tokenURIs[tokenId] = _tokenURI;
     }
 
-    function _baseURI() internal view virtual override returns (string memory) {
-        return _baseURIExtended;
-    }
-
     function tokenURI(uint256 tokenId)
         public
         view
@@ -67,18 +87,6 @@ contract TinyTurtles is ERC721Enumerable, Ownable {
             "ERC721Metadata: URI query for nonexistent token"
         );
 
-        // string memory _tokenURI = _tokenURIs[tokenId];
-        string memory base = _baseURI();
-
-        // // If there is no base URI, return the token URI.
-        // if (bytes(base).length == 0) {
-        //     return _tokenURI;
-        // }
-        // // If both are set, concatenate the baseURI and tokenURI (via abi.encodePacked).
-        // if (bytes(_tokenURI).length > 0) {
-        //     return string(abi.encodePacked(base, _tokenURI));
-        // }
-        // // If there is a baseURI but no tokenURI, concatenate the tokenID to the baseURI.
         return
             string(
                 abi.encodePacked(
@@ -87,10 +95,6 @@ contract TinyTurtles is ERC721Enumerable, Ownable {
                     ".json"
                 )
             );
-    }
-
-    function getTotalSupply() public view returns (uint256) {
-        return totalSupply();
     }
 
     function getAllTokens() public view returns (RenderToken[] memory) {
@@ -107,9 +111,11 @@ contract TinyTurtles is ERC721Enumerable, Ownable {
         return res;
     }
 
-    function withdraw() external onlyOwner {
-        uint256 balance = address(this).balance;
-        payable(_msgSender()).transfer(balance);
+    function withdraw() public payable onlyOwner {
+        (bool success, ) = payable(msg.sender).call{
+            value: address(this).balance
+        }("");
+        require(success);
     }
 
     function reserveTokens() public onlyOwner {
@@ -120,18 +126,15 @@ contract TinyTurtles is ERC721Enumerable, Ownable {
         }
     }
 
-    // return uint256? // onlyOwner()
-    // supply + i == identifier/index of NFT you're minting
-    // supply + i reserved for reserving
     function mint(uint256 numberOfTokens) public payable {
-        require(saleIsActive, "Sale is not active at the moment");
+        require(!paused, "the contract is paused");
         require(
             numberOfTokens > 0,
             "Number of tokens can not be less than or equal to 0"
         );
         require(
-            totalSupply().add(numberOfTokens).add(1) <= MAX_SUPPLY,
-            "Purchase would exceed max supply of Bulls"
+            totalSupply().add(numberOfTokens) <= MAX_SUPPLY,
+            "Purchase would exceed max supply of Turtles"
         );
         require(
             numberOfTokens <= MAX_NFT_PURCHASE,
@@ -142,6 +145,14 @@ contract TinyTurtles is ERC721Enumerable, Ownable {
             "Sent ether value is incorrect"
         );
 
+        if (msg.sender != owner()) {
+            if (onlyWhitelisted == true) {
+                require(isWhitelisted(msg.sender), "user is not whitelisted");
+                uint256 ownerTokenCount = balanceOf(msg.sender);
+                require(ownerTokenCount < nftPerAddressLimit);
+            }
+        }
+
         for (uint256 i = 0; i < numberOfTokens; i++) {
             uint256 newId = totalSupply();
             if (totalSupply() < MAX_SUPPLY) {
@@ -149,5 +160,27 @@ contract TinyTurtles is ERC721Enumerable, Ownable {
                 _setTokenURI(newId, tokenURI(newId));
             }
         }
+    }
+
+    function isWhitelisted(address _user) public view returns (bool) {
+        for (uint256 i = 0; i < whitelistAddresses.length; i++) {
+            if (whitelistAddresses[i] == _user) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    function whitelistUsers(address[] calldata _users) public onlyOwner {
+        delete whitelistAddresses;
+        whitelistAddresses = _users;
+    }
+
+    function setNftPerAddressLimit(uint256 _limit) public onlyOwner {
+        nftPerAddressLimit = _limit;
+    }
+
+    function setOnlyWhitelisted(bool _state) public onlyOwner {
+        onlyWhitelisted = _state;
     }
 }

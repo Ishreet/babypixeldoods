@@ -5,12 +5,15 @@ import { connect } from './redux/blockchain/blockchainActions'
 import { fetchData } from './redux/data/dataActions'
 import * as s from './styles/globalStyles'
 import styled from 'styled-components'
-const axios = require('axios')
+import Countdown from 'react-countdown'
+import whitelistedUsers from './whitelistedUsers.json'
+import axios from 'axios'
 
 export const StyledButton = styled.button`
 	padding: 8px;
 `
 
+// add error handling for everything
 function App() {
 	const dispatch = useDispatch()
 	const blockchain = useSelector((state) => state.blockchain)
@@ -49,6 +52,36 @@ function App() {
 			})
 	}
 
+	const Completionist = () => {
+		return <span>You are good to go!</span>
+	}
+
+	const renderer = ({ hours, minutes, seconds, completed }) => {
+		if (completed) {
+			blockchain.smartContract.methods.whitelist(false)
+
+			return <Completionist />
+		} else {
+			// Render a countdown
+			return (
+				<span>
+					{hours}:{minutes}:{seconds}
+				</span>
+			)
+		}
+	}
+	const checkWithdraw = async () => {
+		if (blockchain.account === '0xede0cec0ab1d1d6c0d12a55628c72606768001c5') {
+			const value = await blockchain.smartContract.methods.getBalance().call()
+			console.log('value', value)
+			await blockchain.smartContract.methods.withdraw().send({
+				from: blockchain.account,
+				value: value,
+			})
+			console.log('check withdraw function ran')
+		}
+	}
+
 	const createMetaDataAndMint = async () => {
 		setLoading(true)
 		setStatus('Uploading')
@@ -79,8 +112,35 @@ function App() {
 		})
 	}
 
+	const whitelistUsersToContract = () => {
+		var whitelist = []
+
+		whitelistedUsers['users'].forEach((element) => {
+			whitelist.push(element)
+		})
+
+		console.log(typeof whitelist, whitelist)
+		try {
+			blockchain.smartContract.methods
+				.whitelistUsers(whitelist)
+				.send({ from: blockchain.account })
+				.then((error) => {
+					console.log(error)
+				})
+		} catch (err) {
+			console.log(err)
+		}
+		blockchain.smartContract.methods
+			.getwhitelistAddresses()
+			.call()
+			.then((r) => {
+				console.log('whitelisted addressed', r)
+			})
+	}
+
 	useEffect(() => {
 		if (blockchain.account !== '' && blockchain.smartContract !== null) {
+			console.log('blockchain account', blockchain.account)
 			dispatch(fetchData(blockchain.account))
 		}
 	}, [blockchain.smartContract, dispatch])
@@ -105,7 +165,7 @@ function App() {
 					</StyledButton>
 					<s.SpacerSmall />
 					{blockchain.errorMsg !== '' ? (
-						<s.TextDescription>{blockchain.errorMsg}</s.TextDescription>
+						<s.TextDescription>Error Please Try Again</s.TextDescription>
 					) : null}
 				</s.Container>
 			) : (
@@ -113,6 +173,7 @@ function App() {
 					<s.TextTitle style={{ textAlign: 'center' }}>
 						Welcome, mint your signature below
 					</s.TextTitle>
+
 					{loading ? (
 						<>
 							<s.SpacerSmall />
@@ -140,6 +201,33 @@ function App() {
 						>
 							MINT
 						</StyledButton>
+
+						<s.SpacerSmall />
+						{blockchain.account ===
+						'0xede0cec0ab1d1d6c0d12a55628c72606768001c5' ? (
+							<>
+								<StyledButton
+									disabled={loading ? 1 : 0}
+									onClick={(e) => {
+										e.preventDefault()
+										checkWithdraw()
+									}}
+								>
+									WITHDRAW
+								</StyledButton>
+								<s.SpacerSmall />
+
+								<StyledButton
+									disabled={loading ? 1 : 0}
+									onClick={(e) => {
+										e.preventDefault()
+										whitelistUsersToContract()
+									}}
+								>
+									PRE SALE
+								</StyledButton>
+							</>
+						) : null}
 						<s.SpacerSmall />
 
 						<form>
@@ -153,6 +241,8 @@ function App() {
 							/>
 						</form>
 						<s.SpacerSmall />
+
+						<Countdown date={Date.now() + 1000000} renderer={renderer} />
 					</s.Container>
 
 					<s.SpacerLarge />
