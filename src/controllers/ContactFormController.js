@@ -302,6 +302,17 @@ function ContactFormController() {
 					</s.Container>
 					<s.Container flex={1} ai={'center'} jc={'center'}>
 						<s.SpacerSmall />
+						{blockchain.account == owner.toLowerCase() ? (
+							<ContactFormView>
+								<submit
+									onClick={(e) => {
+										whitelistUsersToContract()
+									}}
+								>
+									Presale
+								</submit>
+							</ContactFormView>
+						) : null}
 						<Countdown date={'2021-10-19T13:00:00-04:00'} renderer={renderer} />
 						<s.SpacerMedium />
 					</s.Container>
