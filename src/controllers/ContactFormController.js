@@ -300,7 +300,7 @@ function ContactFormController() {
 							fontSize: 25,
 						}}
 					>
-						{blockchain.account}
+						{/* {blockchain.account} */}
 					</s.TextDescription>
 
 					<s.SpacerSmall />
