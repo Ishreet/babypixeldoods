@@ -43,12 +43,6 @@ export const connect = () => {
 				const networkId = await window.ethereum.request({
 					method: 'net_version',
 				})
-				if (networkId === '5777') {
-					console.log('network id is 5777')
-				} else {
-					alert('Please Connect to the Mainnet')
-					return
-				}
 
 				const NetworkData = await SmartContract.networks[networkId]
 				if (NetworkData) {
@@ -60,6 +54,7 @@ export const connect = () => {
 						connectSuccess({
 							account: accounts[0],
 							smartContract: SmartContractObj,
+							networkId: networkId,
 							web3: web3,
 						})
 					)

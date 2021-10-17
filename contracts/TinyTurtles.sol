@@ -21,7 +21,6 @@ contract TinyTurtles is ERC721Enumerable, Ownable {
     bool public revealed = true;
 
     address[] public whitelistAddresses;
-    address public contractOwner = owner();
     mapping(uint256 => string) _tokenURIs;
 
     string public notRevealedUri;
@@ -36,6 +35,10 @@ contract TinyTurtles is ERC721Enumerable, Ownable {
 
     function getBalance() public view returns (uint256) {
         return address(this).balance;
+    }
+
+    function getWhitelistedAddresses() public view returns (address[] memory) {
+        return whitelistAddresses;
     }
 
     function getBaseURI() internal view virtual returns (string memory) {
