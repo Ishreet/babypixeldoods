@@ -7,12 +7,9 @@ import { Provider } from 'react-redux'
 import './styles/reset.css'
 import './styles/theme.css'
 import './scripts'
-import './scripts'
-import IndexView from './views/IndexView'
 
 ReactDOM.render(
 	<Provider store={store}>
-		<IndexView />
 		<App />
 	</Provider>,
 	document.getElementById('root')

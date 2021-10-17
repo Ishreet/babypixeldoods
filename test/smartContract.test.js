@@ -35,4 +35,26 @@ contract('SmartContract', (accounts) => {
 			assert.equal(balanceOfOwner, 1)
 		})
 	})
+	describe('get functions', async () => {
+		it('get owner', async () => {
+			const owner = await smartContract.getOwner()
+			assert.equal(owner, '0xEde0CeC0AB1d1d6c0D12a55628C72606768001c5')
+		})
+		it('get balance', async () => {
+			const owner = await smartContract.getOwner()
+			assert.equal(owner, '0xEde0CeC0AB1d1d6c0D12a55628C72606768001c5')
+		})
+		it('get whitelisted addresses', async () => {
+			const owner = await smartContract.getOwner()
+			assert.equal(owner, '0xEde0CeC0AB1d1d6c0D12a55628C72606768001c5')
+		})
+		it('get owner', async () => {
+			const owner = await smartContract.getOwner()
+			assert.equal(owner, '0xEde0CeC0AB1d1d6c0D12a55628C72606768001c5')
+		})
+		it('get owner', async () => {
+			const owner = await smartContract.getOwner()
+			assert.equal(owner, '0xEde0CeC0AB1d1d6c0D12a55628C72606768001c5')
+		})
+	})
 })

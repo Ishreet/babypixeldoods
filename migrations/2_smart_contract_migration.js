@@ -1,5 +1,5 @@
-const TinyTurtles = artifacts.require('TinyTurtles');
+const TinyTurtles = artifacts.require('TinyTurtles')
 
 module.exports = function (deployer) {
-	deployer.deploy(TinyTurtles);
-};
+	deployer.deploy(TinyTurtles)
+}

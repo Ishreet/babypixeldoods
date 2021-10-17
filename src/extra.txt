@@ -1,0 +1,123 @@
+// {blockchain.account === '' || blockchain.smartContract === null ? (
+			// 	<s.Container flex={1} ai={'center'} jc={'center'}>
+			// 		<s.TextTitle>Connect to the Blockchain</s.TextTitle>
+			// 		<s.SpacerSmall />
+
+			// 		<IndexController />
+
+			// 		<ContactFormView>
+			// 			<connect onClick={(e) => console.log('worked')} />
+			// 		</ContactFormView>
+
+			// 		<s.SpacerSmall />
+			// 		{blockchain.errorMsg !== '' ? (
+			// 			<s.TextDescription>Error Please Try Again</s.TextDescription>
+			// 		) : null}
+			// 	</s.Container>
+			// ) : (
+
+
+
+
+
+<s.Container flex={1} ai={'center'} style={{ padding: 24 }}>
+						<s.TextTitle style={{ textAlign: 'center' }}>
+							Welcome, mint your signature below
+						</s.TextTitle>
+						{loading ? (
+							<>
+								<s.SpacerSmall />
+								<s.TextDescription style={{ textAlign: 'center' }}>
+									loading...
+								</s.TextDescription>
+							</>
+						) : null}
+						{status !== '' ? (
+							<>
+								<s.SpacerSmall />
+								<s.TextDescription style={{ textAlign: 'center' }}>
+									{status}
+								</s.TextDescription>
+							</>
+						) : null}
+						<s.SpacerLarge />
+						<s.Container fd={'row'} jc={'center'}>
+							<StyledButton
+								disabled={loading ? 1 : 0}
+								onClick={(e) => {
+									e.preventDefault()
+									// createMetaDataAndMint()
+								}}
+							>
+								MINT
+							</StyledButton>
+
+							<s.SpacerSmall />
+							{blockchain.account ===
+							'0xede0cec0ab1d1d6c0d12a55628c72606768001c5' ? (
+								<>
+									<StyledButton
+										disabled={loading ? 1 : 0}
+										onClick={(e) => {
+											e.preventDefault()
+											checkWithdraw()
+										}}
+									>
+										WITHDRAW
+									</StyledButton>
+									<s.SpacerSmall />
+
+									<StyledButton
+										disabled={loading ? 1 : 0}
+										onClick={(e) => {
+											e.preventDefault()
+											whitelistUsersToContract()
+										}}
+									>
+										PRE SALE
+									</StyledButton>
+								</>
+							) : null}
+							<s.SpacerSmall />
+
+							<form>
+								<input
+									type='number'
+									min='1'
+									max='20'
+									onChange={(e) => {
+										numberOfTurtles = parseInt(e.target.value)
+									}}
+								/>
+							</form>
+							<s.SpacerSmall />
+
+							<Countdown date={Date.now() + 1000000} renderer={renderer} />
+						</s.Container>
+
+						<s.SpacerLarge />
+						<s.SpacerLarge />
+						<s.Container fd={'row'} style={{ flexWrap: 'wrap' }}>
+							{data.loading ? (
+								<>
+									<s.SpacerSmall />
+									<s.TextDescription style={{ textAlign: 'center' }}>
+										loading...
+									</s.TextDescription>
+								</>
+							) : (
+								NFTs.map((nft, index) => {
+									return (
+										<s.Container key={index} style={{ padding: 16 }}>
+											<s.TextTitle>{nft.metadata.name}</s.TextTitle>
+											<img
+												alt={nft.metadata.name}
+												src={nft.metadata.image}
+												width={150}
+											/>
+										</s.Container>
+									)
+								})
+							)}
+						</s.Container>
+					</s.Container>
