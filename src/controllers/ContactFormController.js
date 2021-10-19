@@ -56,12 +56,26 @@ function ContactFormController() {
 				whitelist.indexOf(blockchain.account) > -1 &&
 				publicSaleStatus === false
 			) {
-				if (_mintAmount > 5 || _mintAmount == 0) {
+				if (_mintAmount > 5) {
 					setStatus('YOU CANNOT MINT MORE THAN 5 RIGHT NOW')
 					return
-				} else sentValue = 0.04
+				} else if (_mintAmount == 0) {
+					setStatus('YOU CANNOT MINT THAN 0 TURTLES')
+					return
+				} else {
+					sentValue = 0.04
+				}
 			} else if (publicSaleStatus === true) {
-				sentValue = 0.04
+				if (_mintAmount > 20) {
+					setStatus('YOU CANNOT MINT MORE THAN 20 RIGHT NOW')
+					return
+				} else if (_mintAmount == 0) {
+					setStatus('YOU CANNOT MINT THAN 0 TURTLES')
+					return
+					// add option for if over 10000
+				} else {
+					sentValue = 0.04
+				}
 			} else {
 				setStatus("UNFORTUNATELY YOU CAN'T MINT YET")
 				return
@@ -166,42 +180,15 @@ function ContactFormController() {
 		return ownerBalance
 	}
 
-	const Completionist = () => {
-		return (
-			<s.TextDescription
-				style={{
-					textAlign: 'center',
-					color: 'var(--accent-text)',
-					fontFamily: 'BaksoSapi',
-					fontSize: 20,
-				}}
-			>
-				Sale is on!
-			</s.TextDescription>
-		)
-	}
-
 	const renderer = ({ days, hours, minutes, seconds, completed }) => {
-		if (completed) {
-			return <Completionist />
-		} else if (days === 1 && whitelist.indexOf(blockchain.account) > -1) {
-			return (
-				<>
-					<span style={{ fontFamily: 'BaksoSapi', fontSize: 20 }}>
-						Whitelisted Users Can Now Mint!
-					</span>
-					<s.SpacerMedium />
-					<span style={{ fontFamily: 'BaksoSapi', fontSize: 20 }}>
-						{days} days, {hours} hours, {minutes} minutes, {seconds} seconds
-					</span>
-				</>
-			)
-		} else {
+		if (!completed) {
 			return (
 				<span style={{ fontFamily: 'BaksoSapi', fontSize: 20 }}>
 					{days} days, {hours} hours, {minutes} minutes, {seconds} seconds
 				</span>
 			)
+		} else {
+			return null
 		}
 	}
 
@@ -233,15 +220,15 @@ function ContactFormController() {
 					blockchain.account === owner
 				) {
 					setStatus('MINTING IS NOW LIVE!')
-					setButtonName('passed')
+					setButtonName('MINT')
 				} else {
 					setStatus('SORRY, MINTING IS NOT LIVE RIGHT NOW')
-					setButtonName('failed')
+					setButtonName('UNAVAILABLE')
 				}
 			}
 		} else {
 			// setStatus('UNEXPECTED ERROR OCCURED :(')
-			setButtonName('failed')
+			setButtonName('UNAVAILABLE')
 		}
 	}, [blockchain.smartContract, dispatch, blockchain.account])
 
@@ -274,7 +261,7 @@ function ContactFormController() {
 					</s.TextDescription>
 					<s.SpacerSmall />
 					<s.Container flex={1} ai={'center'} jc={'center'}>
-						<Countdown date={'2021-10-19T13:00:00-04:00'} renderer={renderer} />
+						<Countdown date={'2021-10-17T07:59:00-04:00'} renderer={renderer} />
 					</s.Container>
 				</>
 			) : (
@@ -374,7 +361,7 @@ function ContactFormController() {
 							</s.TextDescription>
 						)}
 						<s.SpacerSmall />
-						<Countdown date={'2021-10-19T13:00:00-04:00'} renderer={renderer} />
+						<Countdown date={'2021-10-17T07:59:00-04:00'} renderer={renderer} />
 						<s.SpacerMedium />
 					</s.Container>
 				</div>
