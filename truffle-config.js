@@ -25,7 +25,7 @@ module.exports = {
 			provider: () =>
 				new HDWalletProvider(
 					process.env.MNEMONIC,
-					`https://rinkeby.infura.io/v3/${process.env.INFURA_PROJECT_ID}`
+					`https://mainnet.infura.io/v3/${process.env.INFURA_PROJECT_ID}`
 				),
 			network_id: 1, // Mainnet's id
 			gas: 5500000, // Rinkeby has a lower block limit than mainnet

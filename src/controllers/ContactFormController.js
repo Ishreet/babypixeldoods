@@ -171,7 +171,7 @@ function ContactFormController() {
 
 	useEffect(async () => {
 		if (blockchain.account !== '' && blockchain.smartContract !== null) {
-			setStatus('')
+			// setStatus('')
 			saleStatus = await isSaleOn()
 			publicSaleStatus = await isPublicSaleOn()
 			owner = await getOwner()
