@@ -1,6 +1,6 @@
 import ContactFormView from '../views/ContactFormView'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAngleUp, faAngleDown } from '@fortawesome/free-solid-svg-icons'
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import { faAngleUp, faAngleDown } from '@fortawesome/free-solid-svg-icons'
 import React, { useEffect, useState } from 'react'
 import '../App.css'
 import { useDispatch, useSelector } from 'react-redux'
@@ -254,7 +254,7 @@ function ContactFormController() {
 									}}
 									onClick={(e) => subtractTurtle()}
 								>
-									<FontAwesomeIcon icon={faAngleDown} />
+									-
 								</button>
 							</div>
 							<s.SpacerMedium />
@@ -279,7 +279,7 @@ function ContactFormController() {
 									}}
 									onClick={(e) => addTurtle()}
 								>
-									<FontAwesomeIcon icon={faAngleUp} />
+									+
 								</button>
 							</div>
 						</div>
