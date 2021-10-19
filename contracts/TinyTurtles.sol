@@ -89,12 +89,12 @@ contract TinyTurtles is ERC721Enumerable, Ownable {
             totalSupply().add(numberOfTokens) <= maxSupply,
             "The purchase would exceed the max supply of turtles"
         );
-        require(
-            numberOfTokens <= maxNftPurchase,
-            "The contract can only mint up to 20 tokens at a time"
-        );
 
         if (msg.sender != owner()) {
+            require(
+                numberOfTokens <= maxNftPurchase,
+                "The contract can only mint up to 20 tokens at a time"
+            );
             require(
                 nftPrice.mul(numberOfTokens) <= msg.value,
                 "The contract did not receive enough Ethereum"

@@ -30,6 +30,7 @@
     "redux-thunk": "^2.3.0",
     "request": "^2.88.2",
     "styled-components": "^5.3.0",
+    "truffle-flattener": "^1.5.0",
     "web-vitals": "^1.0.1",
     "web3": "^1.5.1"
   },
@@ -58,6 +59,7 @@
     ]
   },
   "devDependencies": {
-    "nodemon": "^2.0.13"
+    "nodemon": "^2.0.13",
+    "truffle-plugin-verify": "^0.5.15"
   }
 }

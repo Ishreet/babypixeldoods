@@ -7,9 +7,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { connect } from '../redux/blockchain/blockchainActions'
 import { fetchData } from '../redux/data/dataActions'
 import Countdown from 'react-countdown'
-import whitelistedUsers from '../whitelistedUsers.json'
 import * as s from '../styles/globalStyles'
-import { get } from 'request'
 
 var saleStatus
 var publicSaleStatus
@@ -27,23 +25,20 @@ function ContactFormController() {
 
 	const startProcess = async () => {
 		if (
-			saleStatus &&
-			(whitelist.indexOf(blockchain.account) > -1 ||
-				publicSaleStatus ||
-				blockchain.account === owner)
+			(saleStatus &&
+				(whitelist.indexOf(blockchain.account) > -1 || publicSaleStatus)) ||
+			blockchain.account === owner
 		) {
 			setLoading(true)
 			setStatus('MINTING YOUR TURTLES...')
-			// setButtonName('MINT')
 			try {
 				mint(mintAmount)
 			} catch (err) {
-				console.log(err)
 				setLoading(false)
 				setStatus('UNEXPECTED ERROR OCCURED :(')
 			}
+		} else if (blockchain.account === owner) {
 		} else {
-			// setButtonName('MINTING UNAVAILABLE')
 			setStatus('SORRY, MINTING IS NOT LIVE RIGHT NOW')
 			return
 		}
@@ -100,7 +95,6 @@ function ContactFormController() {
 				)
 			})
 			.then((receipt) => {
-				console.log(receipt)
 				setLoading(false)
 				dispatch(fetchData(blockchain.account))
 				setMintAmount(1)
@@ -124,29 +118,10 @@ function ContactFormController() {
 		setMintAmount(newNum)
 	}
 
-	const whitelistUsersToContract = () => {
-		whitelistedUsers['users'].forEach((element) => {
-			whitelist.push(element)
-		})
-
-		console.log('whitlist 1234', whitelist)
-		try {
-			blockchain.smartContract.methods
-				.whitelistUsers(whitelist)
-				.send({ from: blockchain.account })
-				.then((error) => {
-					console.log(error)
-				})
-		} catch (err) {
-			console.log(err)
-		}
-	}
-
 	const isSaleOn = async () => {
 		const saleValue = await blockchain.smartContract.methods
 			.saleIsActive()
 			.call()
-		console.log('sale value', saleValue)
 		return saleValue
 	}
 
@@ -154,13 +129,11 @@ function ContactFormController() {
 		const publicSaleValue = await blockchain.smartContract.methods
 			.publicMintingStatus()
 			.call()
-		console.log('public sale value', publicSaleValue)
 		return publicSaleValue
 	}
 
 	const getOwner = async () => {
 		const ownerValue = await blockchain.smartContract.methods.owner().call()
-		console.log('owner', ownerValue)
 		return ownerValue.toLowerCase()
 	}
 
@@ -168,7 +141,6 @@ function ContactFormController() {
 		const whitelistAddresses = await blockchain.smartContract.methods
 			.getWhitelistedAddresses()
 			.call()
-		console.log('contractAddresses', whitelistAddresses)
 		return whitelistAddresses
 	}
 
@@ -176,7 +148,6 @@ function ContactFormController() {
 		const ownerBalance = await blockchain.smartContract.methods
 			.getBalance()
 			.call()
-		console.log('balance', ownerBalance)
 		return ownerBalance
 	}
 
@@ -200,6 +171,7 @@ function ContactFormController() {
 
 	useEffect(async () => {
 		if (blockchain.account !== '' && blockchain.smartContract !== null) {
+			setStatus('')
 			saleStatus = await isSaleOn()
 			publicSaleStatus = await isPublicSaleOn()
 			owner = await getOwner()
@@ -207,27 +179,19 @@ function ContactFormController() {
 			whitelist = whitelist.map((address) => address.toLowerCase())
 			balance = await getOwnerBalance()
 
-			console.log('saleStatus', saleStatus)
-			console.log('publicSaleStatus', publicSaleStatus)
-			console.log('owner', owner)
-			console.log('whitelist', whitelist)
-			console.log('ownerBalance', balance)
-
-			if (saleStatus) {
-				if (
-					whitelist.indexOf(blockchain.account) > -1 ||
-					publicSaleStatus ||
-					blockchain.account === owner
-				) {
+			if (saleStatus && !(blockchain.account === owner)) {
+				if (whitelist.indexOf(blockchain.account) > -1 || publicSaleStatus) {
 					setStatus('MINTING IS NOW LIVE!')
 					setButtonName('MINT')
 				} else {
 					setStatus('SORRY, MINTING IS NOT LIVE RIGHT NOW')
 					setButtonName('UNAVAILABLE')
 				}
+			} else if (blockchain.account === owner) {
+				setStatus('MINTING IS NOW LIVE!')
+				setButtonName('MINT')
 			}
 		} else {
-			// setStatus('UNEXPECTED ERROR OCCURED :(')
 			setButtonName('UNAVAILABLE')
 		}
 	}, [blockchain.smartContract, dispatch, blockchain.account])
@@ -240,7 +204,7 @@ function ContactFormController() {
 						<submit
 							onClick={(e) => {
 								dispatch(connect())
-								if (blockchain.networkId !== '5777') {
+								if (blockchain.networkId !== '1') {
 									setStatus('PLEASE CONNECT TO THE MAINNET')
 								}
 							}}
@@ -261,7 +225,7 @@ function ContactFormController() {
 					</s.TextDescription>
 					<s.SpacerSmall />
 					<s.Container flex={1} ai={'center'} jc={'center'}>
-						<Countdown date={'2021-10-17T07:59:00-04:00'} renderer={renderer} />
+						<Countdown date={'2021-10-19T13:00:00-04:00'} renderer={renderer} />
 					</s.Container>
 				</>
 			) : (
@@ -276,19 +240,6 @@ function ContactFormController() {
 							{buttonName}
 						</submit>
 					</ContactFormView>
-
-					<s.SpacerSmall />
-
-					<s.TextDescription
-						style={{
-							textAlign: 'center',
-							color: 'var(--accent-text)',
-							fontFamily: 'BaksoSapi',
-							fontSize: 25,
-						}}
-					>
-						{/* {blockchain.account} */}
-					</s.TextDescription>
 
 					<s.SpacerSmall />
 
@@ -318,7 +269,7 @@ function ContactFormController() {
 							>
 								{mintAmount}
 							</s.TextDescription>
-							<s.SpacerSmall />
+							<s.SpacerMedium />
 							<div>
 								<button
 									style={{
@@ -335,33 +286,20 @@ function ContactFormController() {
 					</s.Container>
 					<s.Container flex={1} ai={'center'} jc={'center'}>
 						<s.SpacerSmall />
-						{blockchain.account === owner ? (
-							<button
-								style={{
-									fontFamily: 'BaksoSapi',
-									fontSize: 25,
-									backgroundColor: 'transparent',
-								}}
-								onClick={(e) => {
-									whitelistUsersToContract()
-								}}
-							>
-								Presale
-							</button>
-						) : (
-							<s.TextDescription
-								style={{
-									textAlign: 'center',
-									color: 'var(--accent-text)',
-									fontFamily: 'BaksoSapi',
-									fontSize: 20,
-								}}
-							>
-								{status}
-							</s.TextDescription>
-						)}
+
+						<s.TextDescription
+							style={{
+								textAlign: 'center',
+								color: 'var(--accent-text)',
+								fontFamily: 'BaksoSapi',
+								fontSize: 20,
+							}}
+						>
+							{status}
+						</s.TextDescription>
+
 						<s.SpacerSmall />
-						<Countdown date={'2021-10-17T07:59:00-04:00'} renderer={renderer} />
+						<Countdown date={'2021-10-19T13:00:00-04:00'} renderer={renderer} />
 						<s.SpacerMedium />
 					</s.Container>
 				</div>
