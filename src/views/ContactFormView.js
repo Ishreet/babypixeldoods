@@ -50,7 +50,7 @@ class ContactFormView extends React.Component {
 
   render() {
     const proxies = ContactFormView.Controller !== ContactFormView ? transformProxies(this.props.children) : {
-      'submit': [],
+
     }
 
     return (
@@ -58,11 +58,11 @@ class ContactFormView extends React.Component {
         <style dangerouslySetInnerHTML={{ __html: `
           @import url(/css/normalize.css);
           @import url(/css/webflow.css);
-          @import url(/css/tinyturtles.webflow.css);
+          @import url(/css/heartz-219951h.webflow.css);
         ` }} />
         <span className="af-view">
-          <div className="af-class-div-block-3">
-            {map(proxies['submit'], props => <a href="#" {...{...props, className: `af-class-button w-button ${props.className || ''}`}}>{props.children ? props.children : <React.Fragment> Mint </React.Fragment>}</a>)}
+          <div className="af-class-div-block-32">
+            <a af-stock="submit" href="#" className="af-class-button w-button">Connect</a>
           </div>
         </span>
       </span>
