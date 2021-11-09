@@ -38,7 +38,7 @@ export const connect = () => {
 			let web3 = new Web3(window.ethereum)
 			try {
 				const accounts = await window.ethereum.request({
-					method: 'eth_accounts',
+					method: 'eth_requestAccounts',
 				})
 				const networkId = await window.ethereum.request({
 					method: 'net_version',
@@ -73,11 +73,46 @@ export const connect = () => {
 				dispatch(connectFailed('Something went wrong.'))
 			}
 		} else {
-			dispatch(connectFailed('Install Metamask.'))
+			let web3 = new Web3(window.web3.currentProvider)
+			try {
+				const accounts = await window.web3.currentProvider.request({
+					method: 'eth_requestAccounts',
+				})
+				const networkId = await window.web3.currentProvider.request({
+					method: 'net_version',
+				})
+
+				const NetworkData = await SmartContract.networks[networkId]
+				if (NetworkData) {
+					const SmartContractObj = new web3.eth.Contract(
+						SmartContract.abi,
+						NetworkData.address
+					)
+					dispatch(
+						connectSuccess({
+							account: accounts[0],
+							smartContract: SmartContractObj,
+							networkId: networkId,
+							web3: web3,
+						})
+					)
+					// Add listeners start
+					window.web3.currentProvider.on('accountsChanged', (accounts) => {
+						dispatch(updateAccount(accounts[0]))
+					})
+					window.web3.currentProvider.on('chainChanged', () => {
+						window.location.reload()
+					})
+					// Add listeners end
+				} else {
+					dispatch(connectFailed('Change network to Polygon.'))
+				}
+			} catch (err) {
+				dispatch(connectFailed('Something went wrong.'))
+			}
 		}
 	}
 }
-
 export const updateAccount = (account) => {
 	return async (dispatch) => {
 		dispatch(updateAccountRequest({ account: account }))
