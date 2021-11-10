@@ -20,8 +20,8 @@ contract Heartz is ERC721Enumerable, Ownable {
     uint256 public nftPerAddressLimit = 5;
 
     // booleans
-    bool public saleIsActive = true; // false
-    bool public publicMintingStatus = true; // false
+    bool public saleIsActive = false; // false
+    bool public publicMintingStatus = false; // false
     bool public onlyWhitelisted = true; // true
     bool public revealed = false;
 

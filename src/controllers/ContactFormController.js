@@ -1,6 +1,4 @@
 import ContactFormView from '../views/ContactFormView'
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import { faAngleUp, faAngleDown } from '@fortawesome/free-solid-svg-icons'
 import React, { useEffect, useState } from 'react'
 import '../App.css'
 import { useDispatch, useSelector } from 'react-redux'
@@ -204,8 +202,9 @@ function ContactFormController() {
 						<submit
 							onClick={(e) => {
 								dispatch(connect())
-								if (blockchain.networkId !== '5777') {
+								if (blockchain.networkId !== '1') {
 									setStatus('PLEASE CONNECT TO THE MAINNET')
+									console.log(blockchain.networkId)
 								}
 							}}
 						>

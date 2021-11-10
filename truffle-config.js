@@ -1,5 +1,4 @@
 require('dotenv').config()
-const { faLessThanEqual } = require('@fortawesome/free-solid-svg-icons')
 const HDWalletProvider = require('@truffle/hdwallet-provider')
 
 module.exports = {
