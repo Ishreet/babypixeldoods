@@ -30,7 +30,7 @@ function ContactFormController() {
 			blockchain.account === owner
 		) {
 			setLoading(true)
-			setStatus('MINTING YOUR TURTLES...')
+			setStatus('MINTING YOUR HEARTZ...')
 			try {
 				mint(mintAmount)
 			} catch (err) {
@@ -55,21 +55,21 @@ function ContactFormController() {
 					setStatus('YOU CANNOT MINT MORE THAN 5 RIGHT NOW')
 					return
 				} else if (_mintAmount == 0) {
-					setStatus('YOU CANNOT MINT THAN 0 TURTLES')
+					setStatus('YOU CANNOT MINT THAN 0 HEARTZ')
 					return
 				} else {
-					sentValue = 0.04
+					sentValue = 0.05
 				}
 			} else if (publicSaleStatus === true) {
 				if (_mintAmount > 20) {
 					setStatus('YOU CANNOT MINT MORE THAN 20 RIGHT NOW')
 					return
 				} else if (_mintAmount == 0) {
-					setStatus('YOU CANNOT MINT THAN 0 TURTLES')
+					setStatus('YOU CANNOT MINT THAN 0 HEARTZ')
 					return
 					// add option for if over 10000
 				} else {
-					sentValue = 0.04
+					sentValue = 0.05
 				}
 			} else {
 				setStatus("UNFORTUNATELY YOU CAN'T MINT YET")
@@ -98,11 +98,11 @@ function ContactFormController() {
 				setLoading(false)
 				dispatch(fetchData(blockchain.account))
 				setMintAmount(1)
-				setStatus('SUCCESS! YOUR TURTLES ARE NOW ON THE BLOCKCHAIN!')
+				setStatus('SUCCESS! YOUR HEARTZ ARE NOW ON THE BLOCKCHAIN!')
 			})
 	}
 
-	const addTurtle = () => {
+	const addHeartz = () => {
 		let newNum = mintAmount + 1
 		if (newNum > 20) {
 			newNum = 20
@@ -110,7 +110,7 @@ function ContactFormController() {
 		setMintAmount(newNum)
 	}
 
-	const subtractTurtle = () => {
+	const subtractHeartz = () => {
 		let newNum = mintAmount - 1
 		if (newNum < 0) {
 			newNum = 0
@@ -154,7 +154,7 @@ function ContactFormController() {
 	const renderer = ({ days, hours, minutes, seconds, completed }) => {
 		if (!completed) {
 			return (
-				<span style={{ fontFamily: 'BaksoSapi', fontSize: 20 }}>
+				<span style={{ fontFamily: 'Monospace', fontSize: 20 }}>
 					{days} days, {hours} hours, {minutes} minutes, {seconds} seconds
 				</span>
 			)
@@ -204,7 +204,7 @@ function ContactFormController() {
 						<submit
 							onClick={(e) => {
 								dispatch(connect())
-								if (blockchain.networkId !== '1') {
+								if (blockchain.networkId !== '5777') {
 									setStatus('PLEASE CONNECT TO THE MAINNET')
 								}
 							}}
@@ -217,7 +217,7 @@ function ContactFormController() {
 						style={{
 							textAlign: 'center',
 							color: 'var(--accent-text)',
-							fontFamily: 'BaksoSapi',
+							fontFamily: 'Monospace',
 							fontSize: 20,
 						}}
 					>
@@ -225,7 +225,7 @@ function ContactFormController() {
 					</s.TextDescription>
 					<s.SpacerSmall />
 					<s.Container flex={1} ai={'center'} jc={'center'}>
-						<Countdown date={'2021-10-19T13:00:00-04:00'} renderer={renderer} />
+						<Countdown date={'2021-10-11T13:00:00-04:00'} renderer={renderer} />
 					</s.Container>
 				</>
 			) : (
@@ -248,11 +248,11 @@ function ContactFormController() {
 							<div>
 								<button
 									style={{
-										fontFamily: 'BaksoSapi',
+										fontFamily: 'Monospace',
 										fontSize: 35,
 										backgroundColor: 'transparent',
 									}}
-									onClick={(e) => subtractTurtle()}
+									onClick={(e) => subtractHeartz()}
 								>
 									-
 								</button>
@@ -263,7 +263,7 @@ function ContactFormController() {
 								style={{
 									textAlign: 'center',
 									color: 'var(--accent-text)',
-									fontFamily: 'BaksoSapi',
+									fontFamily: 'Monospace',
 									fontSize: 35,
 								}}
 							>
@@ -273,11 +273,11 @@ function ContactFormController() {
 							<div>
 								<button
 									style={{
-										fontFamily: 'BaksoSapi',
+										fontFamily: 'Monospace',
 										fontSize: 35,
 										backgroundColor: 'transparent',
 									}}
-									onClick={(e) => addTurtle()}
+									onClick={(e) => addHeartz()}
 								>
 									+
 								</button>
@@ -291,7 +291,7 @@ function ContactFormController() {
 							style={{
 								textAlign: 'center',
 								color: 'var(--accent-text)',
-								fontFamily: 'BaksoSapi',
+								fontFamily: 'Monospace',
 								fontSize: 20,
 							}}
 						>
@@ -299,7 +299,7 @@ function ContactFormController() {
 						</s.TextDescription>
 
 						<s.SpacerSmall />
-						<Countdown date={'2021-10-19T13:00:00-04:00'} renderer={renderer} />
+						<Countdown date={'2021-10-11T13:00:00-04:00'} renderer={renderer} />
 						<s.SpacerMedium />
 					</s.Container>
 				</div>

@@ -8,20 +8,20 @@ import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 
 // contract class
-contract TinyTurtles is ERC721Enumerable, Ownable {
+contract Heartz is ERC721Enumerable, Ownable {
     // utilities
     using Strings for uint256;
     using SafeMath for uint256;
 
     // uint256
-    uint256 public constant nftPrice = 40000000000000000;
+    uint256 public constant nftPrice = 50000000000000000;
     uint256 public constant maxNftPurchase = 20;
-    uint256 public maxSupply = 10000;
+    uint256 public maxSupply = 7500;
     uint256 public nftPerAddressLimit = 5;
 
     // booleans
-    bool public saleIsActive = false; // false
-    bool public publicMintingStatus = false; // false
+    bool public saleIsActive = true; // false
+    bool public publicMintingStatus = true; // false
     bool public onlyWhitelisted = true; // true
     bool public revealed = false;
 
@@ -35,7 +35,7 @@ contract TinyTurtles is ERC721Enumerable, Ownable {
     mapping(uint256 => string) _tokenURIs;
 
     // contract constructor
-    constructor() ERC721("Tiny Turtles", "TINY") {}
+    constructor() ERC721("Heartz", "HRTZ") {}
 
     // get functions
     function getBalance() public view returns (uint256) {
@@ -87,7 +87,7 @@ contract TinyTurtles is ERC721Enumerable, Ownable {
         );
         require(
             totalSupply().add(numberOfTokens) <= maxSupply,
-            "The purchase would exceed the max supply of turtles"
+            "The purchase would exceed the max supply of Heartz"
         );
 
         if (msg.sender != owner()) {

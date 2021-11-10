@@ -1,6 +1,6 @@
 // constants
 import Web3 from 'web3'
-import SmartContract from '../../contracts/TinyTurtles.json'
+import SmartContract from '../../contracts/Heartz.json'
 // log
 import { fetchData } from '../data/dataActions'
 
@@ -67,7 +67,7 @@ export const connect = () => {
 					})
 					// Add listeners end
 				} else {
-					dispatch(connectFailed('Change network to Polygon.'))
+					dispatch(connectFailed('Change network to Mainnet.'))
 				}
 			} catch (err) {
 				dispatch(connectFailed('Something went wrong.'))
@@ -105,7 +105,7 @@ export const connect = () => {
 					})
 					// Add listeners end
 				} else {
-					dispatch(connectFailed('Change network to Polygon.'))
+					dispatch(connectFailed('Change network to Mainnet.'))
 				}
 			} catch (err) {
 				dispatch(connectFailed('Something went wrong.'))

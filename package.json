@@ -1,5 +1,5 @@
 {
-	"name": "tiny-turtles",
+	"name": "heartz",
 	"version": "1.0.0",
 	"private": true,
 	"dependencies": {
@@ -14,6 +14,7 @@
 		"chai": "^4.3.4",
 		"chai-as-promised": "^7.1.1",
 		"dotenv": "^10.0.0",
+		"firebase": "^9.4.0",
 		"ipfs-http-client": "^52.0.0",
 		"react": "^17.0.2",
 		"react-canvas-draw": "^1.1.1",
