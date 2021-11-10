@@ -155,7 +155,7 @@ function ContactFormController() {
 		if (!completed) {
 			return (
 				<span style={{ fontFamily: 'Monospace', fontSize: 20 }}>
-					{days} days, {hours} hours, {minutes} minutes, {seconds} seconds
+					{days}: {hours}: {minutes}: {seconds}
 				</span>
 			)
 		} else {
@@ -225,7 +225,7 @@ function ContactFormController() {
 					</s.TextDescription>
 					<s.SpacerSmall />
 					<s.Container flex={1} ai={'center'} jc={'center'}>
-						<Countdown date={'2021-10-11T13:00:00-04:00'} renderer={renderer} />
+						<Countdown date={'2021-11-11T16:00:00-04:00'} renderer={renderer} />
 					</s.Container>
 				</>
 			) : (
@@ -299,7 +299,7 @@ function ContactFormController() {
 						</s.TextDescription>
 
 						<s.SpacerSmall />
-						<Countdown date={'2021-10-11T13:00:00-04:00'} renderer={renderer} />
+						<Countdown date={'2021-11-11T16:00:00-04:00'} renderer={renderer} />
 						<s.SpacerMedium />
 					</s.Container>
 				</div>
