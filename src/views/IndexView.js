@@ -89,7 +89,7 @@ class IndexView extends React.Component {
             </div>
             <div className="af-class-section-2 af-class-wf-section">
               <div className="af-class-div-block">
-                <div className="af-class-div-block-2"><img src="images/heartz_logo.png" loading="lazy" sizes="(max-width: 479px) 100vw, (max-width: 991px) 146.65625px, 20vw" srcSet="images/heartz_logo-p-800.png 800w, images/heartz_logo.png 1601w" alt className="af-class-image-2" />
+                <div className="af-class-div-block-2"><img src="images/heartz_logo.png" loading="lazy" sizes="(max-width: 479px) 100vw, (max-width: 991px) 175.984375px, 24vw" srcSet="images/heartz_logo-p-800.png 800w, images/heartz_logo.png 1601w" alt className="af-class-image-2" />
                   <p className="af-class-paragraph"><strong>7500</strong> unique Heartz have been released onto the <strong>Ethereum blockchain</strong> and are looking for their perfect match!</p>
                   <ContactFormView.Controller />
                   <a href="#" className="af-class-button af-class-other w-button">Connect </a><img src="images/Ceasar.png" loading="lazy" alt className="af-class-image" />
