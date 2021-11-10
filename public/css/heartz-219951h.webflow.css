@@ -65,8 +65,9 @@
 }
 
 .af-view .af-class-floating-hearts {
-  position: absolute;
-  z-index: auto;
+  position: -webkit-sticky;
+  position: sticky;
+  z-index: 0;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;

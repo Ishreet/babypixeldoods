@@ -208,7 +208,7 @@ class IndexView extends React.Component {
               <div id="team" className="af-class-meet-the-team af-class-wf-section">
                 <h1 className="af-class-heading-7">Meet the <span className="af-class-text-span-3">Team</span></h1>
                 <div className="af-class-div-block-11">
-                  <div className="af-class-div-block-13"><img src="images/image0-6.jpg" loading="lazy" sizes="(max-width: 479px) 54vw, 300px" srcSet="images/image0-6-p-500.jpeg 500w, images/image0-6.jpg 600w" alt className="af-class-image-6" />
+                  <div className="af-class-div-block-13"><img src="images/image0-6.jpg" loading="lazy" sizes="(max-width: 479px) 84vw, 300px" srcSet="images/image0-6-p-500.jpeg 500w, images/image0-6.jpg 600w" alt className="af-class-image-6" />
                     <div className="af-class-text-block-2">
                       <a href="https://www.instagram.com/manamilist" target="_blank" className="af-class-link"><strong>Manami</strong></a> - Co-Founder &amp; Creative Director<br />
                     </div>
