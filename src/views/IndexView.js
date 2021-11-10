@@ -5,13 +5,10 @@ import { createScope, map, transformProxies } from './helpers'
 import ContactFormView from './ContactFormView'
 
 const scripts = [
-  { loading: fetch("https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=6185b031ef3a00116bb3f571").then(body => body.text()), isAsync: false },
-  { loading: fetch("js/webflow.js").then(body => body.text()), isAsync: false },
   { loading: fetch("https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js").then(body => body.text()), isAsync: false },
   { loading: Promise.resolve("particlesJS(\"particles-js\",{particles:{number:{value:43,density:{enable:!0,value_area:800}},color:{value:\"#b33687\"},shape:{type:\"image\",stroke:{width:0,color:\"#000\"},polygon:{nb_sides:6},image:{src:\"https://uploads-ssl.webflow.com/6185b031ef3a00116bb3f571/61870624b8b3a90fe2389ab8_Love_Heart_SVG.png\",width:10,height:10}},opacity:{value:.3,random:!0,anim:{enable:!1,speed:1,opacity_min:.1,sync:!1}},size:{value:15.782952832645451,random:!1,anim:{enable:!1,speed:10,size_min:13.586413586413586,sync:!1}},line_linked:{enable:!1,distance:200,color:\"#ffffff\",opacity:1,width:2},move:{enable:!0,speed:1,direction:\"top\",random:!1,straight:!1,out_mode:\"out\",bounce:!1,attract:{enable:!1,rotateX:600,rotateY:1200}}},interactivity:{detect_on:\"canvas\",events:{onhover:{enable:!1,mode:\"grab\"},onclick:{enable:!1,mode:\"push\"},resize:!0},modes:{grab:{distance:400,line_linked:{opacity:1}},bubble:{distance:400,size:40,duration:2,opacity:8,speed:3},repulse:{distance:200,duration:1},push:{particles_nb:4},remove:{particles_nb:2}}},retina_detect:!0});"), isAsync: false },
-  { loading: fetch("https://momentjs.com/downloads/moment.min.js").then(body => body.text()), isAsync: false },
-  { loading: fetch("https://momentjs.com/downloads/moment-timezone-with-data.min.js").then(body => body.text()), isAsync: false },
-  { loading: Promise.resolve("var timer,now=new Date,now=new Date,then=new Date(2021,10,10,16,0,0,0),utcOffset=moment.tz(moment.utc(),\"America/New_York\").utcOffset(),localOffset=moment().utcOffset(),offset=utcOffset-localOffset,compareDate=new Date(then)-now.getDate()-60*offset*1e3;function timeBetweenDates(e){var t=new Date(e),o=new Date,a=t.getTime()-o.getTime();a<=0?($(\"#days\").text(\"0\"),$(\"#hours\").text(\"0\"),$(\"#minutes\").text(\"0\"),$(\"#seconds\").text(\"0\")):(e=Math.floor(a/1e3),t=Math.floor(e/60),o=Math.floor(t/60),a=Math.floor(o/24),o%=24,t%=60,e%=60,$(\"#days\").text(a),$(\"#hours\").text(o),$(\"#minutes\").text(t),$(\"#seconds\").text(e))}timer=setInterval(function(){timeBetweenDates(compareDate)},1e3);"), isAsync: false },
+  { loading: fetch("https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=6185b031ef3a00116bb3f571").then(body => body.text()), isAsync: false },
+  { loading: fetch("js/webflow.js").then(body => body.text()), isAsync: false },
 ]
 
 let Controller
@@ -72,6 +69,9 @@ class IndexView extends React.Component {
         <span className="af-view">
           <div className="af-class-body">
             <header id="particles-js" className="af-class-floating-hearts">
+              <div className="w-embed w-script">
+                <style dangerouslySetInnerHTML={{__html: "\n.af-view .af-class-particles-js-canvas-el {\nposition: absolute;\nmax-width: 100%;\nmax-height:100%;\nleft: 0%;\ntop: 0%;\nright: 0%;\nbottom: 0%;\nz-index: 1;\n}" }} />
+              </div>
               <div className="af-class-div-block-30">
                 <div>
                   <div className="af-class-div-block-29">
@@ -360,9 +360,6 @@ class IndexView extends React.Component {
               </div>
             </header>
             {/* [if lte IE 9]><![endif] */}
-            <style dangerouslySetInnerHTML={{__html: "\n.af-view .af-class-particles-js-canvas-el {\nposition: absolute;\nmax-width: 100%;\nmax-height:100%;\nleft: 0%;\ntop: 0%;\nright: 0%;\nbottom: 0%;\nz-index: 1;\n}" }} />
-            {/*  MOMENT.JS  */}
-            {/*  MOMENT.JS TIMEZONE DATA  */}
           </div>
         </span>
       </span>
