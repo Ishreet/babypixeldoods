@@ -65,13 +65,9 @@
 }
 
 .af-view .af-class-floating-hearts {
-  position: -webkit-sticky;
-  position: sticky;
-  z-index: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  position: relative;
+  z-index: 100;
+  display: block;
   width: 100%;
   height: auto;
   -webkit-box-orient: vertical;
@@ -79,7 +75,9 @@
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  background-color: transparent;
+  background-color: #fff3f0;
+  -o-object-fit: contain;
+  object-fit: contain;
 }
 
 .af-view .af-class-body {
