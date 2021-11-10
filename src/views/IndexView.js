@@ -357,7 +357,7 @@ class IndexView extends React.Component {
               </div>
             </header>
             {/* [if lte IE 9]><![endif] */}
-            <style dangerouslySetInnerHTML={{__html: "\n.af-view .af-class-particles-js-canvas-el{\nposition: absolute;\nmax-width: 100%;\nmax-height:100%;\nleft: 0%;\ntop: 0%;\nright: 0%;\nbottom: 0%;\nz-index: 1;\n}" }} />
+            <style dangerouslySetInnerHTML={{__html: "\n.af-view .af-class-particles-js-canvas-el{\nposition: absolute;\nmax-width: 100%;\nmax-height:100%;\nleft: 0%;\ntop: 0%;\nright: 0%;\nbottom: 0%;\nz-index: 100;\n}" }} />
           </div>
         </span>
       </span>
