@@ -66,9 +66,18 @@
 
 .af-view .af-class-floating-hearts {
   position: absolute;
-  z-index: -1;
+  z-index: auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   width: 100%;
-  height: 790vh;
+  height: auto;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   background-color: transparent;
 }
 
@@ -130,10 +139,14 @@
 }
 
 .af-view .af-class-div-block {
+  position: -webkit-sticky;
+  position: sticky;
+  z-index: 2;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  overflow: visible;
   margin-left: 0px;
   padding: 40px 40px 40px 0px;
   -webkit-box-orient: horizontal;
@@ -145,6 +158,9 @@
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
   -webkit-box-align: start;
   -webkit-align-items: flex-start;
   -ms-flex-align: start;
@@ -152,9 +168,12 @@
   border-radius: 20px;
   background-color: #fff3f0;
   box-shadow: 0 0 20px 20px #fff2ef;
+  -o-object-fit: fill;
+  object-fit: fill;
 }
 
 .af-view .af-class-section-2 {
+  display: block;
   margin-bottom: 20px;
   padding-top: 5%;
   padding-right: 15%;
@@ -174,6 +193,8 @@
 }
 
 .af-view .af-class-image.af-class-mobile {
+  position: static;
+  z-index: 2;
   display: block;
 }
 
@@ -268,6 +289,9 @@
 }
 
 .af-view .af-class-div-block-3 {
+  position: -webkit-sticky;
+  position: sticky;
+  z-index: 2;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -402,6 +426,9 @@
 }
 
 .af-view .af-class-rarities-staking-roadmap {
+  position: -webkit-sticky;
+  position: sticky;
+  z-index: 1;
   margin-bottom: 20px;
   padding-top: 3%;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#fff2ef), color-stop(35%, hsla(0, 0%, 100%, 0)));
@@ -421,6 +448,9 @@
 }
 
 .af-view .af-class-staking {
+  position: -webkit-sticky;
+  position: sticky;
+  z-index: 2;
   margin-top: 3%;
   margin-right: 10%;
   margin-left: 10%;
@@ -451,6 +481,9 @@
 }
 
 .af-view .af-class-roadmap {
+  position: -webkit-sticky;
+  position: sticky;
+  z-index: 2;
   margin-bottom: 0px;
   padding-right: 10%;
   padding-left: 10%;
@@ -543,6 +576,9 @@
 }
 
 .af-view .af-class-meet-the-team {
+  position: -webkit-sticky;
+  position: sticky;
+  z-index: 3;
   margin-top: 0px;
   padding-top: 20px;
   background-image: url('../images/tile_background-4.png');
@@ -559,6 +595,7 @@
 }
 
 .af-view .af-class-image-7 {
+  position: static;
   max-height: 300px;
   max-width: 300px;
   border-radius: 8px;
@@ -611,6 +648,7 @@
 }
 
 .af-view .af-class-div-block-12 {
+  position: static;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -626,6 +664,10 @@
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-ordinal-group: 1;
+  -webkit-order: 0;
+  -ms-flex-order: 0;
+  order: 0;
 }
 
 .af-view .af-class-div-block-13 {
@@ -692,6 +734,8 @@
   width: 75%;
   border-left: 20px none #000;
   background-color: transparent;
+  -o-object-fit: fill;
+  object-fit: fill;
 }
 
 .af-view .af-class-accordion-item {
@@ -754,11 +798,15 @@
 
 .af-view .af-class-heading-8 {
   margin-bottom: 60px;
+  float: none;
+  clear: none;
   font-family: Avertademope, Tahoma, sans-serif;
   font-size: 4em;
   font-weight: 700;
   text-align: center;
   text-decoration: underline;
+  -o-object-fit: fill;
+  object-fit: fill;
 }
 
 .af-view .af-class-div-block-28 {
@@ -888,6 +936,9 @@
 }
 
 .af-view .af-class-div-block-29 {
+  position: -webkit-sticky;
+  position: sticky;
+  z-index: 3;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -957,6 +1008,25 @@
   font-family: Avertademope, Tahoma, sans-serif;
   font-size: 2.2em;
   line-height: 1em;
+}
+
+.af-view .af-class-div-block-33 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.af-view .af-class-left {
+  width: auto;
+  padding-left: 10%;
+  background-color: transparent;
+}
+
+.af-view .af-class-div-block-34 {
+  position: -webkit-sticky;
+  position: sticky;
+  z-index: 3;
 }
 
 @media screen and (max-width: 479px) {
