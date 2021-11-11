@@ -165,11 +165,15 @@ function ContactFormController() {
 		if (blockchain.account !== '' && blockchain.smartContract !== null) {
 			dispatch(fetchData(blockchain.account))
 		}
-	}, [blockchain.smartContract, dispatch])
+	}, [blockchain.smartContract, dispatch, blockchain.networkId])
 
 	useEffect(async () => {
+		console.log('smart contract', blockchain.smartContract)
+		console.log('blockchain account', blockchain.account)
+		console.log('blockchain network id', typeof blockchain.networkId)
+
 		if (blockchain.account !== '' && blockchain.smartContract !== null) {
-			// setStatus('')
+			setStatus('')
 			saleStatus = await isSaleOn()
 			publicSaleStatus = await isPublicSaleOn()
 			owner = await getOwner()
@@ -177,6 +181,7 @@ function ContactFormController() {
 			whitelist = whitelist.map((address) => address.toLowerCase())
 			balance = await getOwnerBalance()
 
+			console.log('sale status', publicSaleStatus)
 			if (saleStatus && !(blockchain.account === owner)) {
 				if (whitelist.indexOf(blockchain.account) > -1 || publicSaleStatus) {
 					setStatus('MINTING IS NOW LIVE!')
@@ -192,7 +197,12 @@ function ContactFormController() {
 		} else {
 			setButtonName('UNAVAILABLE')
 		}
-	}, [blockchain.smartContract, dispatch, blockchain.account])
+	}, [
+		blockchain.smartContract,
+		dispatch,
+		blockchain.account,
+		blockchain.networkId,
+	])
 
 	return (
 		<>
@@ -203,8 +213,7 @@ function ContactFormController() {
 							onClick={(e) => {
 								dispatch(connect())
 								if (blockchain.networkId !== '1') {
-									setStatus('PLEASE CONNECT TO THE MAINNET')
-									console.log(blockchain.networkId)
+									setStatus('CONNECT TO MAINNET')
 								}
 							}}
 						>
@@ -224,7 +233,7 @@ function ContactFormController() {
 					</s.TextDescription>
 					<s.SpacerSmall />
 					<s.Container flex={1} ai={'center'} jc={'center'}>
-						<Countdown date={'2021-11-11T16:00:00-04:00'} renderer={renderer} />
+						<Countdown date={'2021-11-11T17:00:00-04:00'} renderer={renderer} />
 					</s.Container>
 				</>
 			) : (
@@ -242,47 +251,49 @@ function ContactFormController() {
 
 					<s.SpacerSmall />
 
-					<s.Container flex={1} ai={'center'} jc={'center'}>
-						<div style={{ display: 'flex', float: 'left' }}>
-							<div>
-								<button
-									style={{
-										fontFamily: 'Monospace',
-										fontSize: 35,
-										backgroundColor: 'transparent',
-									}}
-									onClick={(e) => subtractHeartz()}
-								>
-									-
-								</button>
-							</div>
-							<s.SpacerMedium />
+					{blockchain.networkId === '1' ? (
+						<s.Container flex={1} ai={'center'} jc={'center'}>
+							<div style={{ display: 'flex', float: 'left' }}>
+								<div>
+									<button
+										style={{
+											fontFamily: 'Monospace',
+											fontSize: 35,
+											backgroundColor: 'transparent',
+										}}
+										onClick={(e) => subtractHeartz()}
+									>
+										-
+									</button>
+								</div>
+								<s.SpacerMedium />
 
-							<s.TextDescription
-								style={{
-									textAlign: 'center',
-									color: 'var(--accent-text)',
-									fontFamily: 'Monospace',
-									fontSize: 35,
-								}}
-							>
-								{mintAmount}
-							</s.TextDescription>
-							<s.SpacerMedium />
-							<div>
-								<button
+								<s.TextDescription
 									style={{
+										textAlign: 'center',
+										color: 'var(--accent-text)',
 										fontFamily: 'Monospace',
 										fontSize: 35,
-										backgroundColor: 'transparent',
 									}}
-									onClick={(e) => addHeartz()}
 								>
-									+
-								</button>
+									{mintAmount}
+								</s.TextDescription>
+								<s.SpacerMedium />
+								<div>
+									<button
+										style={{
+											fontFamily: 'Monospace',
+											fontSize: 35,
+											backgroundColor: 'transparent',
+										}}
+										onClick={(e) => addHeartz()}
+									>
+										+
+									</button>
+								</div>
 							</div>
-						</div>
-					</s.Container>
+						</s.Container>
+					) : null}
 					<s.Container flex={1} ai={'center'} jc={'center'}>
 						<s.SpacerSmall />
 
@@ -298,7 +309,7 @@ function ContactFormController() {
 						</s.TextDescription>
 
 						<s.SpacerSmall />
-						<Countdown date={'2021-11-11T16:00:00-04:00'} renderer={renderer} />
+						<Countdown date={'2021-11-11T17:00:00-04:00'} renderer={renderer} />
 						<s.SpacerMedium />
 					</s.Container>
 				</div>

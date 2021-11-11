@@ -16,7 +16,7 @@ contract Heartz is ERC721Enumerable, Ownable {
     // uint256
     uint256 public constant nftPrice = 50000000000000000;
     uint256 public constant maxNftPurchase = 20;
-    uint256 public maxSupply = 7500;
+    uint256 public maxSupply = 7499;
     uint256 public nftPerAddressLimit = 5;
 
     // booleans
@@ -151,7 +151,7 @@ contract Heartz is ERC721Enumerable, Ownable {
         require(_exists(tokenId), "Token does not exist");
         if (revealed == false) {
             return
-                "https://ipfs.io/ipfs/QmPQ3KBtVBi7kaecjwBK9RvPG9CzTqCnQSKpBV3xtnRgoN";
+                "https://ipfs.io/ipfs/QmdmY6GJqqUzRKgEbnD3Q7E2GYykVMWg4gGhrKWaJBaPf2";
         }
 
         return string(abi.encodePacked(baseURI, tokenId.toString(), ".json"));

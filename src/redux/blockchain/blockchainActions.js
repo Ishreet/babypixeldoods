@@ -58,6 +58,7 @@ export const connect = () => {
 						SmartContract.abi,
 						NetworkData.address
 					)
+
 					dispatch(
 						connectSuccess({
 							account: accounts[0],
