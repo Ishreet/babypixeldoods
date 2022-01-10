@@ -10,7 +10,6 @@ import * as s from '../styles/globalStyles'
 var saleStatus
 var publicSaleStatus
 var owner
-var whitelist = []
 var balance
 
 function ContactFormController() {
@@ -22,11 +21,7 @@ function ContactFormController() {
 	const [buttonName, setButtonName] = useState('MINT')
 
 	const startProcess = async () => {
-		if (
-			(saleStatus &&
-				(whitelist.indexOf(blockchain.account) > -1 || publicSaleStatus)) ||
-			blockchain.account === owner
-		) {
+		if ((saleStatus && publicSaleStatus) || blockchain.account === owner) {
 			setLoading(true)
 			setStatus('MINTING YOUR LILBABYDOODZ...')
 			try {
@@ -45,10 +40,7 @@ function ContactFormController() {
 	const mint = (_mintAmount) => {
 		var sentValue = 0
 		if (blockchain.account !== owner) {
-			if (
-				whitelist.indexOf(blockchain.account) > -1 &&
-				publicSaleStatus === false
-			) {
+			if (publicSaleStatus === false) {
 				if (_mintAmount > 5) {
 					setStatus('YOU CANNOT MINT MORE THAN 5 RIGHT NOW')
 					return
@@ -136,13 +128,6 @@ function ContactFormController() {
 		return ownerValue.toLowerCase()
 	}
 
-	const getWhitelist = async () => {
-		const whitelistAddresses = await blockchain.smartContract.methods
-			.getWhitelistedAddresses()
-			.call()
-		return whitelistAddresses
-	}
-
 	const getOwnerBalance = async () => {
 		const ownerBalance = await blockchain.smartContract.methods
 			.getBalance()
@@ -178,13 +163,11 @@ function ContactFormController() {
 			saleStatus = await isSaleOn()
 			publicSaleStatus = await isPublicSaleOn()
 			owner = await getOwner()
-			whitelist = await getWhitelist()
-			whitelist = whitelist.map((address) => address.toLowerCase())
 			balance = await getOwnerBalance()
 
 			console.log('sale status', publicSaleStatus)
 			if (saleStatus && !(blockchain.account === owner)) {
-				if (whitelist.indexOf(blockchain.account) > -1 || publicSaleStatus) {
+				if (publicSaleStatus) {
 					setStatus('MINTING IS NOW LIVE!')
 					setButtonName('MINT')
 				} else {
@@ -225,7 +208,7 @@ function ContactFormController() {
 					<s.TextDescription
 						style={{
 							textAlign: 'center',
-							color: 'var(--accent-text)',
+							color: 'white',
 							fontFamily: 'Monospace',
 							fontSize: 20,
 						}}
@@ -259,6 +242,7 @@ function ContactFormController() {
 									style={{
 										fontFamily: 'Monospace',
 										fontSize: 35,
+										color: 'white',
 										backgroundColor: 'transparent',
 									}}
 									onClick={(e) => subtractDoodz()}
@@ -271,7 +255,7 @@ function ContactFormController() {
 							<s.TextDescription
 								style={{
 									textAlign: 'center',
-									color: 'var(--accent-text)',
+									color: 'white',
 									fontFamily: 'Monospace',
 									fontSize: 35,
 								}}
@@ -284,6 +268,7 @@ function ContactFormController() {
 									style={{
 										fontFamily: 'Monospace',
 										fontSize: 35,
+										color: 'white',
 										backgroundColor: 'transparent',
 									}}
 									onClick={(e) => addDoodz()}
@@ -299,7 +284,7 @@ function ContactFormController() {
 						<s.TextDescription
 							style={{
 								textAlign: 'center',
-								color: 'var(--accent-text)',
+								color: 'white',
 								fontFamily: 'Monospace',
 								fontSize: 20,
 							}}
