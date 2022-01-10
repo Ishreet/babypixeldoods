@@ -21,11 +21,12 @@ contract LilBabyDood is ERC721Enumerable, Ownable {
 
     // booleans
     bool public saleIsActive = false; // false
-    bool public publicMintingStatus = false; // false
     bool public revealed = false;
 
     // strings
+    // TODO change baseURI to private?
     string public baseURI;
+    string public revealedURI;
 
     // mappings
     mapping(uint256 => string) _tokenURIs;
@@ -47,12 +48,12 @@ contract LilBabyDood is ERC721Enumerable, Ownable {
         baseURI = baseURI_;
     }
 
-    function reveal() public onlyOwner {
-        revealed = true;
+    function setRevealedURI(string memory revealedURI_) external onlyOwner {
+        revealedURI = revealedURI_;
     }
 
-    function flipPublicMintingStatus() public onlyOwner {
-        publicMintingStatus = !publicMintingStatus;
+    function reveal() public onlyOwner {
+        revealed = true;
     }
 
     function flipSaleState() public onlyOwner {
@@ -93,13 +94,11 @@ contract LilBabyDood is ERC721Enumerable, Ownable {
 
             require(saleIsActive, "The contract sale is not active");
 
-            if (publicMintingStatus) {
-                for (uint256 i = 0; i < numberOfTokens; i++) {
-                    uint256 newId = totalSupply();
-                    if (totalSupply() < maxSupply) {
-                        _safeMint(msg.sender, newId);
-                        _setTokenURI(newId, tokenURI(newId));
-                    }
+            for (uint256 i = 0; i < numberOfTokens; i++) {
+                uint256 newId = totalSupply();
+                if (totalSupply() < maxSupply) {
+                    _safeMint(msg.sender, newId);
+                    _setTokenURI(newId, tokenURI(newId));
                 }
             }
         } else {
@@ -123,19 +122,15 @@ contract LilBabyDood is ERC721Enumerable, Ownable {
     {
         require(_exists(tokenId), "Token does not exist");
         if (revealed == false) {
-            return
-                "https://ipfs.io/ipfs/QmdmY6GJqqUzRKgEbnD3Q7E2GYykVMWg4gGhrKWaJBaPf2";
+            return revealedURI;
         }
 
         return string(abi.encodePacked(baseURI, tokenId.toString(), ".json"));
     }
 
     // classic withdraw function
-    //  TODO make withdraw non payable
-    function withdraw() public payable onlyOwner {
-        (bool success, ) = payable(msg.sender).call{
-            value: address(this).balance
-        }("");
-        require(success);
+    function withdraw() public onlyOwner {
+        uint256 balance = address(this).balance;
+        payable(msg.sender).transfer(balance);
     }
 }
