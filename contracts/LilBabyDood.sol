@@ -8,25 +8,21 @@ import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 
 // contract class
-contract Heartz is ERC721Enumerable, Ownable {
+contract LilBabyDood is ERC721Enumerable, Ownable {
     // utilities
     using Strings for uint256;
     using SafeMath for uint256;
 
     // uint256
-    uint256 public constant nftPrice = 50000000000000000;
-    uint256 public constant maxNftPurchase = 20;
-    uint256 public maxSupply = 7499;
+    uint256 public constant nftPrice = 30000000000000000;
+    uint256 public constant maxNftPurchase = 8;
+    uint256 public maxSupply = 3000;
     uint256 public nftPerAddressLimit = 5;
 
     // booleans
     bool public saleIsActive = false; // false
     bool public publicMintingStatus = false; // false
-    bool public onlyWhitelisted = true; // true
     bool public revealed = false;
-
-    // addresses
-    address[] public whitelistAddresses;
 
     // strings
     string public baseURI;
@@ -35,15 +31,11 @@ contract Heartz is ERC721Enumerable, Ownable {
     mapping(uint256 => string) _tokenURIs;
 
     // contract constructor
-    constructor() ERC721("Heartz", "HRTZ") {}
+    constructor() ERC721("LilBabyDood", "LBD") {}
 
     // get functions
     function getBalance() public view returns (uint256) {
         return address(this).balance;
-    }
-
-    function getWhitelistedAddresses() public view returns (address[] memory) {
-        return whitelistAddresses;
     }
 
     function getBaseURI() internal view virtual returns (string memory) {
@@ -67,10 +59,6 @@ contract Heartz is ERC721Enumerable, Ownable {
         saleIsActive = !saleIsActive;
     }
 
-    function flipOnlyWhitelisted() public onlyOwner {
-        onlyWhitelisted = !onlyWhitelisted;
-    }
-
     function _setTokenURI(uint256 tokenId, string memory _tokenURI)
         internal
         virtual
@@ -87,40 +75,25 @@ contract Heartz is ERC721Enumerable, Ownable {
         );
         require(
             totalSupply().add(numberOfTokens) <= maxSupply,
-            "The purchase would exceed the max supply of Heartz"
+            "The purchase would exceed the max supply of LilBabyDoods"
         );
 
         if (msg.sender != owner()) {
+            if (totalSupply() <= 333) {
+                require(
+                    nftPrice.mul(numberOfTokens) <= msg.value,
+                    "The contract did not receive enough Ethereum"
+                );
+            }
+
             require(
                 numberOfTokens <= maxNftPurchase,
                 "The contract can only mint up to 20 tokens at a time"
             );
-            require(
-                nftPrice.mul(numberOfTokens) <= msg.value,
-                "The contract did not receive enough Ethereum"
-            );
+
             require(saleIsActive, "The contract sale is not active");
 
             if (publicMintingStatus) {
-                for (uint256 i = 0; i < numberOfTokens; i++) {
-                    uint256 newId = totalSupply();
-                    if (totalSupply() < maxSupply) {
-                        _safeMint(msg.sender, newId);
-                        _setTokenURI(newId, tokenURI(newId));
-                    }
-                }
-            } else if (onlyWhitelisted) {
-                require(
-                    isWhitelisted(msg.sender),
-                    "The user is not currently whitelisted"
-                );
-                require(
-                    (balanceOf(msg.sender) < nftPerAddressLimit) &&
-                        (numberOfTokens <=
-                            (nftPerAddressLimit.sub(balanceOf(msg.sender)))),
-                    "The contract can only mint up to 5 tokens at a time"
-                );
-
                 for (uint256 i = 0; i < numberOfTokens; i++) {
                     uint256 newId = totalSupply();
                     if (totalSupply() < maxSupply) {
@@ -158,26 +131,11 @@ contract Heartz is ERC721Enumerable, Ownable {
     }
 
     // classic withdraw function
+    //  TODO make withdraw non payable
     function withdraw() public payable onlyOwner {
         (bool success, ) = payable(msg.sender).call{
             value: address(this).balance
         }("");
         require(success);
-    }
-
-    // check if specified user is whitelisted
-    function isWhitelisted(address user) public view returns (bool) {
-        for (uint256 i = 0; i < whitelistAddresses.length; i++) {
-            if (whitelistAddresses[i] == user) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    // generate list of whitelist users
-    function whitelistUsers(address[] calldata users) public onlyOwner {
-        delete whitelistAddresses;
-        whitelistAddresses = users;
     }
 }

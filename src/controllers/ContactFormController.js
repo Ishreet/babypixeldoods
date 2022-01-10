@@ -28,7 +28,7 @@ function ContactFormController() {
 			blockchain.account === owner
 		) {
 			setLoading(true)
-			setStatus('MINTING YOUR HEARTZ...')
+			setStatus('MINTING YOUR LILBABYDOODZ...')
 			try {
 				mint(mintAmount)
 			} catch (err) {
@@ -53,7 +53,7 @@ function ContactFormController() {
 					setStatus('YOU CANNOT MINT MORE THAN 5 RIGHT NOW')
 					return
 				} else if (_mintAmount == 0) {
-					setStatus('YOU CANNOT MINT THAN 0 HEARTZ')
+					setStatus('YOU CANNOT MINT THAN 0 LILBABYDOODZ')
 					return
 				} else {
 					sentValue = 0.05
@@ -63,7 +63,7 @@ function ContactFormController() {
 					setStatus('YOU CANNOT MINT MORE THAN 20 RIGHT NOW')
 					return
 				} else if (_mintAmount == 0) {
-					setStatus('YOU CANNOT MINT THAN 0 HEARTZ')
+					setStatus('YOU CANNOT MINT THAN 0 LILBABYDOODZ')
 					return
 				} else {
 					sentValue = 0.05
@@ -97,11 +97,11 @@ function ContactFormController() {
 				setLoading(false)
 				dispatch(fetchData(blockchain.account))
 				setMintAmount(1)
-				setStatus('SUCCESS! YOUR HEARTZ ARE NOW ON THE BLOCKCHAIN!')
+				setStatus('SUCCESS! YOUR LILBABYDOODZ ARE NOW ON THE BLOCKCHAIN!')
 			})
 	}
 
-	const addHeartz = () => {
+	const addDoodz = () => {
 		let newNum = mintAmount + 1
 		if (newNum > 20) {
 			newNum = 20
@@ -109,7 +109,7 @@ function ContactFormController() {
 		setMintAmount(newNum)
 	}
 
-	const subtractHeartz = () => {
+	const subtractDoodz = () => {
 		let newNum = mintAmount - 1
 		if (newNum < 0) {
 			newNum = 0
@@ -261,7 +261,7 @@ function ContactFormController() {
 										fontSize: 35,
 										backgroundColor: 'transparent',
 									}}
-									onClick={(e) => subtractHeartz()}
+									onClick={(e) => subtractDoodz()}
 								>
 									-
 								</button>
@@ -286,7 +286,7 @@ function ContactFormController() {
 										fontSize: 35,
 										backgroundColor: 'transparent',
 									}}
-									onClick={(e) => addHeartz()}
+									onClick={(e) => addDoodz()}
 								>
 									+
 								</button>
