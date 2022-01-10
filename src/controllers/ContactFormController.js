@@ -65,7 +65,6 @@ function ContactFormController() {
 				} else if (_mintAmount == 0) {
 					setStatus('YOU CANNOT MINT THAN 0 HEARTZ')
 					return
-					// add option for if over 10000
 				} else {
 					sentValue = 0.05
 				}
@@ -76,6 +75,7 @@ function ContactFormController() {
 		} else if (blockchain.account === owner) {
 			sentValue = 0
 		}
+
 		blockchain.smartContract.methods
 			.mint(_mintAmount)
 			.send({
@@ -84,6 +84,7 @@ function ContactFormController() {
 					(sentValue * _mintAmount).toString(),
 					'ether'
 				),
+				gas: 350000 * _mintAmount,
 			})
 			.once('error', (err) => {
 				console.error(err)
@@ -251,49 +252,47 @@ function ContactFormController() {
 
 					<s.SpacerSmall />
 
-					{blockchain.networkId === '1' ? (
-						<s.Container flex={1} ai={'center'} jc={'center'}>
-							<div style={{ display: 'flex', float: 'left' }}>
-								<div>
-									<button
-										style={{
-											fontFamily: 'Monospace',
-											fontSize: 35,
-											backgroundColor: 'transparent',
-										}}
-										onClick={(e) => subtractHeartz()}
-									>
-										-
-									</button>
-								</div>
-								<s.SpacerMedium />
-
-								<s.TextDescription
+					<s.Container flex={1} ai={'center'} jc={'center'}>
+						<div style={{ display: 'flex', float: 'left' }}>
+							<div>
+								<button
 									style={{
-										textAlign: 'center',
-										color: 'var(--accent-text)',
 										fontFamily: 'Monospace',
 										fontSize: 35,
+										backgroundColor: 'transparent',
 									}}
+									onClick={(e) => subtractHeartz()}
 								>
-									{mintAmount}
-								</s.TextDescription>
-								<s.SpacerMedium />
-								<div>
-									<button
-										style={{
-											fontFamily: 'Monospace',
-											fontSize: 35,
-											backgroundColor: 'transparent',
-										}}
-										onClick={(e) => addHeartz()}
-									>
-										+
-									</button>
-								</div>
+									-
+								</button>
 							</div>
-						</s.Container>
-					) : null}
+							<s.SpacerMedium />
+
+							<s.TextDescription
+								style={{
+									textAlign: 'center',
+									color: 'var(--accent-text)',
+									fontFamily: 'Monospace',
+									fontSize: 35,
+								}}
+							>
+								{mintAmount}
+							</s.TextDescription>
+							<s.SpacerMedium />
+							<div>
+								<button
+									style={{
+										fontFamily: 'Monospace',
+										fontSize: 35,
+										backgroundColor: 'transparent',
+									}}
+									onClick={(e) => addHeartz()}
+								>
+									+
+								</button>
+							</div>
+						</div>
+					</s.Container>
 					<s.Container flex={1} ai={'center'} jc={'center'}>
 						<s.SpacerSmall />
 
