@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="600" height="200" viewBox="0 0 600 200">
+  <defs>
+    <clipPath id="clip-Custom_Size_1">
+      <rect width="600" height="200"/>
+    </clipPath>
+  </defs>
+  <g id="Custom_Size_1" data-name="Custom Size – 1" clip-path="url(#clip-Custom_Size_1)">
+    <rect id="Rectangle_1" data-name="Rectangle 1" width="14" height="172" transform="translate(0 14)" fill="#1b2f68"/>
+    <rect id="Rectangle_4" data-name="Rectangle 4" width="14" height="572" transform="translate(586) rotate(90)" fill="#1b2f68"/>
+    <rect id="Rectangle_5" data-name="Rectangle 5" width="572" height="172" transform="translate(14 14)" fill="#5a82f0"/>
+    <rect id="Rectangle_6" data-name="Rectangle 6" width="572" height="12" transform="translate(14 14)" fill="#6cacf9"/>
+    <path id="Icon_awesome-twitter" data-name="Icon awesome-twitter" d="M100.938,26.152c.071,1,.071,2,.071,3,0,30.481-23.2,65.6-65.6,65.6A65.158,65.158,0,0,1,0,84.4a47.7,47.7,0,0,0,5.568.285,46.177,46.177,0,0,0,28.625-9.851,23.1,23.1,0,0,1-21.558-15.99,29.077,29.077,0,0,0,4.355.357,24.386,24.386,0,0,0,6.068-.785A23.06,23.06,0,0,1,4.568,35.789V35.5a23.221,23.221,0,0,0,10.422,2.927A23.092,23.092,0,0,1,7.852,7.592,65.539,65.539,0,0,0,55.394,31.72a26.029,26.029,0,0,1-.571-5.282,23.079,23.079,0,0,1,39.9-15.776,45.4,45.4,0,0,0,14.634-5.568A23,23,0,0,1,99.224,17.8,46.223,46.223,0,0,0,112.5,14.231a49.564,49.564,0,0,1-11.564,11.921Z" transform="translate(43.749 50.933)" fill="none"/>
+    <g id="Component_1_1" data-name="Component 1 – 1" transform="translate(68 32)" opacity="0.999">
+      <text id="Connect" transform="translate(0 99)" fill="none" font-size="99" font-family="PixeloidMono, Pixeloid Mono"><tspan x="0" y="0">Connect</tspan></text>
+    </g>
+    <rect id="Rectangle_2" data-name="Rectangle 2" width="14" height="572" transform="translate(586 186) rotate(90)" fill="#1b2f68"/>
+    <rect id="Rectangle_3" data-name="Rectangle 3" width="14" height="172" transform="translate(586 14)" fill="#1b2f68"/>
+    <rect id="Rectangle_7" data-name="Rectangle 7" width="572" height="12" transform="translate(14 174)" fill="#3c5ec0"/>
+    <line id="Line_1" data-name="Line 1" x2="34" transform="translate(79 60)" fill="none" stroke="#fff" stroke-width="10"/>
+    <line id="Line_2" data-name="Line 2" y2="56" transform="translate(74 65)" fill="none" stroke="#fff" stroke-width="10"/>
+    <line id="Line_3" data-name="Line 3" x2="34" transform="translate(79 126)" fill="none" stroke="#fff" stroke-width="10"/>
+    <rect id="Rectangle_8" data-name="Rectangle 8" width="12" height="12" transform="translate(113 109)" fill="#fff"/>
+    <rect id="Rectangle_9" data-name="Rectangle 9" width="12" height="12" transform="translate(113 65)" fill="#fff"/>
+    <rect id="Rectangle_10" data-name="Rectangle 10" width="11" height="33" transform="translate(134 87)" fill="#fff"/>
+    <rect id="Rectangle_11" data-name="Rectangle 11" width="33" height="11" transform="translate(145 76)" fill="#fff"/>
+    <rect id="Rectangle_12" data-name="Rectangle 12" width="11" height="33" transform="translate(178 87)" fill="#fff"/>
+    <rect id="Rectangle_13" data-name="Rectangle 13" width="33" height="11" transform="translate(145 120)" fill="#fff"/>
+    <rect id="Rectangle_14" data-name="Rectangle 14" width="11" height="55" transform="translate(200 76)" fill="#fff"/>
+    <rect id="Rectangle_15" data-name="Rectangle 15" width="13" height="11" transform="translate(209 87)" fill="#fff"/>
+    <rect id="Rectangle_16" data-name="Rectangle 16" width="22" height="11" transform="translate(222 76)" fill="#fff"/>
+    <rect id="Rectangle_17" data-name="Rectangle 17" width="11" height="44" transform="translate(244 87)" fill="#fff"/>
+    <rect id="Rectangle_18" data-name="Rectangle 18" width="11" height="55" transform="translate(266 76)" fill="#fff"/>
+    <rect id="Rectangle_19" data-name="Rectangle 19" width="13" height="11" transform="translate(275 87)" fill="#fff"/>
+    <rect id="Rectangle_20" data-name="Rectangle 20" width="22" height="11" transform="translate(288 76)" fill="#fff"/>
+    <rect id="Rectangle_21" data-name="Rectangle 21" width="11" height="44" transform="translate(310 87)" fill="#fff"/>
+    <rect id="Rectangle_22" data-name="Rectangle 22" width="11" height="33" transform="translate(332 87)" fill="#fff"/>
+    <rect id="Rectangle_23" data-name="Rectangle 23" width="44" height="11" transform="translate(343 120)" fill="#fff"/>
+    <rect id="Rectangle_24" data-name="Rectangle 24" width="33" height="11" transform="translate(343 76)" fill="#fff"/>
+    <rect id="Rectangle_25" data-name="Rectangle 25" width="11" height="22" transform="translate(376 87)" fill="#fff"/>
+    <rect id="Rectangle_26" data-name="Rectangle 26" width="40" height="11" transform="translate(339 98)" fill="#fff"/>
+    <rect id="Rectangle_27" data-name="Rectangle 27" width="44" height="11" transform="translate(409 76)" fill="#fff"/>
+    <rect id="Rectangle_28" data-name="Rectangle 28" width="11" height="33" transform="translate(398 87)" fill="#fff"/>
+    <rect id="Rectangle_29" data-name="Rectangle 29" width="44" height="11" transform="translate(409 120)" fill="#fff"/>
+    <rect id="Rectangle_30" data-name="Rectangle 30" width="11" height="77" transform="translate(486 54)" fill="#fff"/>
+    <rect id="Rectangle_31" data-name="Rectangle 31" width="19" height="11" transform="translate(489 120)" fill="#fff"/>
+    <rect id="Rectangle_32" data-name="Rectangle 32" width="55" height="11" transform="translate(464 76)" fill="#fff"/>
+    <rect id="Rectangle_33" data-name="Rectangle 33" width="495" height="109" transform="translate(44 44)" fill="#5a82f0"/>
+  </g>
+</svg>
