@@ -1,6 +1,6 @@
 // constants
 import Web3 from 'web3'
-import SmartContract from '../../contracts/LilBabyDood.json'
+import SmartContract from '../../contracts/BabyPixelDoods.json'
 // log
 import { fetchData } from '../data/dataActions'
 

@@ -8,9 +8,8 @@ import Countdown from 'react-countdown'
 import * as s from '../styles/globalStyles'
 
 var saleStatus
-var publicSaleStatus
 var owner
-var balance
+var supply
 
 function ContactFormController() {
 	const dispatch = useDispatch()
@@ -21,7 +20,7 @@ function ContactFormController() {
 	const [buttonName, setButtonName] = useState('MINT')
 
 	const startProcess = async () => {
-		if ((saleStatus && publicSaleStatus) || blockchain.account === owner) {
+		if (saleStatus || blockchain.account === owner) {
 			setLoading(true)
 			setStatus('MINTING...')
 			try {
@@ -40,28 +39,14 @@ function ContactFormController() {
 	const mint = (_mintAmount) => {
 		var sentValue = 0
 		if (blockchain.account !== owner) {
-			if (publicSaleStatus === false) {
-				if (_mintAmount > 8) {
-					setStatus('YOU CANNOT MINT MORE THAN 5 RIGHT NOW')
-					return
-				} else if (_mintAmount == 0) {
-					setStatus('YOU CANNOT MINT THAN 0 LILBABYDOODZ')
-					return
-				} else {
+			if (saleStatus) {
+				if (supply > 750) {
 					sentValue = 0.03
-				}
-			} else if (publicSaleStatus === true) {
-				if (_mintAmount > 20) {
-					setStatus('YOU CANNOT MINT MORE THAN 20 RIGHT NOW')
-					return
-				} else if (_mintAmount == 0) {
-					setStatus('YOU CANNOT MINT THAN 0 LILBABYDOODZ')
-					return
 				} else {
-					sentValue = 0.03
+					sentValue = 0
 				}
 			} else {
-				setStatus("UNFORTUNATELY YOU CAN'T MINT YET")
+				setStatus('UNAVAILABLE')
 				return
 			}
 		} else if (blockchain.account === owner) {
@@ -81,34 +66,35 @@ function ContactFormController() {
 			.once('error', (err) => {
 				console.error(err)
 				setLoading(false)
-				setStatus(
-					'SOMETHING WENT WRONG WITH THE TRANSACTION, PLEASE TRY AGAIN LATER'
-				)
+				setStatus('TRY AGAIN LATER')
 			})
 			.then((receipt) => {
 				setLoading(false)
 				dispatch(fetchData(blockchain.account))
 				setMintAmount(1)
-				setStatus(
-					'SUCCESS! AAAAAAAAAAGASLKFDGNA;SLGNA;SLGNA;SRLGNA;SDLGNASLGDN;ASLD'
-				)
+				setStatus('SUCCESS!')
 			})
 	}
 
-	const addDoodz = () => {
+	const addDoods = () => {
 		let newNum = mintAmount + 1
-		if (newNum > 20) {
-			newNum = 20
+		if (newNum > 12) {
+			newNum = 12
 		}
 		setMintAmount(newNum)
 	}
 
-	const subtractDoodz = () => {
+	const subtractDoods = () => {
 		let newNum = mintAmount - 1
-		if (newNum < 0) {
-			newNum = 0
+		if (newNum < 1) {
+			newNum = 1
 		}
 		setMintAmount(newNum)
+	}
+
+	const totalSupply = async () => {
+		const supply = await blockchain.smartContract.methods.totalSupply().call()
+		return supply
 	}
 
 	const isSaleOn = async () => {
@@ -118,23 +104,9 @@ function ContactFormController() {
 		return saleValue
 	}
 
-	const isPublicSaleOn = async () => {
-		const publicSaleValue = await blockchain.smartContract.methods
-			.publicMintingStatus()
-			.call()
-		return publicSaleValue
-	}
-
 	const getOwner = async () => {
 		const ownerValue = await blockchain.smartContract.methods.owner().call()
 		return ownerValue.toLowerCase()
-	}
-
-	const getOwnerBalance = async () => {
-		const ownerBalance = await blockchain.smartContract.methods
-			.getBalance()
-			.call()
-		return ownerBalance
 	}
 
 	const renderer = ({ days, hours, minutes, seconds, completed }) => {
@@ -156,28 +128,17 @@ function ContactFormController() {
 	}, [blockchain.smartContract, dispatch, blockchain.networkId])
 
 	useEffect(async () => {
-		console.log('smart contract', blockchain.smartContract)
-		console.log('blockchain account', blockchain.account)
-		console.log('blockchain network id', typeof blockchain.networkId)
-
 		if (blockchain.account !== '' && blockchain.smartContract !== null) {
 			setStatus('')
 			saleStatus = await isSaleOn()
-			publicSaleStatus = await isPublicSaleOn()
 			owner = await getOwner()
-			balance = await getOwnerBalance()
+			supply = await totalSupply()
 
-			console.log('sale status', publicSaleStatus)
 			if (saleStatus && !(blockchain.account === owner)) {
-				if (publicSaleStatus) {
-					setStatus('MINT LIVE!')
-					setButtonName('MINT')
-				} else {
-					setStatus('MINT LIVE!')
-					setButtonName('UNAVAILABLE')
-				}
+				setStatus('MINT IS LIVE!')
+				setButtonName('MINT')
 			} else if (blockchain.account === owner) {
-				setStatus('MINT LIVE!')
+				setStatus('MINT IS LIVE!')
 				setButtonName('MINT')
 			}
 		} else {
@@ -198,7 +159,7 @@ function ContactFormController() {
 						<submit
 							onClick={(e) => {
 								dispatch(connect())
-								if (blockchain.networkId !== '1') {
+								if (blockchain.networkId !== '4') {
 									setStatus('CONNECT TO MAINNET')
 								}
 							}}
@@ -211,7 +172,7 @@ function ContactFormController() {
 						style={{
 							textAlign: 'center',
 							color: 'white',
-							fontFamily: 'Monospace',
+							fontFamily: 'PixelSans',
 							fontSize: 20,
 						}}
 					>
@@ -219,7 +180,7 @@ function ContactFormController() {
 					</s.TextDescription>
 					<s.SpacerSmall />
 					<s.Container flex={1} ai={'center'} jc={'center'}>
-						<Countdown date={'2021-11-11T17:00:00-04:00'} renderer={renderer} />
+						<Countdown date={'2021-01-11T12:00:00-04:00'} renderer={renderer} />
 					</s.Container>
 				</>
 			) : (
@@ -242,12 +203,12 @@ function ContactFormController() {
 							<div>
 								<button
 									style={{
-										fontFamily: 'Monospace',
-										fontSize: 35,
+										fontFamily: 'PixelSans',
+										fontSize: 50,
 										color: 'white',
 										backgroundColor: 'transparent',
 									}}
-									onClick={(e) => subtractDoodz()}
+									onClick={(e) => subtractDoods()}
 								>
 									-
 								</button>
@@ -258,7 +219,7 @@ function ContactFormController() {
 								style={{
 									textAlign: 'center',
 									color: 'white',
-									fontFamily: 'Monospace',
+									fontFamily: 'PixelSans',
 									fontSize: 35,
 								}}
 							>
@@ -268,12 +229,12 @@ function ContactFormController() {
 							<div>
 								<button
 									style={{
-										fontFamily: 'Monospace',
-										fontSize: 35,
+										fontFamily: 'PixelSans',
+										fontSize: 50,
 										color: 'white',
 										backgroundColor: 'transparent',
 									}}
-									onClick={(e) => addDoodz()}
+									onClick={(e) => addDoods()}
 								>
 									+
 								</button>
@@ -287,7 +248,7 @@ function ContactFormController() {
 							style={{
 								textAlign: 'center',
 								color: 'white',
-								fontFamily: 'Monospace',
+								fontFamily: 'PixelSans',
 								fontSize: 20,
 							}}
 						>
@@ -295,7 +256,7 @@ function ContactFormController() {
 						</s.TextDescription>
 
 						<s.SpacerSmall />
-						<Countdown date={'2021-11-11T17:00:00-04:00'} renderer={renderer} />
+						<Countdown date={'2021-01-11T12:00:00-04:00'} renderer={renderer} />
 						<s.SpacerMedium />
 					</s.Container>
 				</div>

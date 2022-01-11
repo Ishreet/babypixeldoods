@@ -1,5 +1,5 @@
-const LilBabyDood = artifacts.require('LilBabyDood')
+const BabyPixelDoods = artifacts.require('BabyPixelDoods')
 
 module.exports = function (deployer) {
-	deployer.deploy(LilBabyDood)
+	deployer.deploy(BabyPixelDoods)
 }

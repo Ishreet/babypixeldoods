@@ -8,16 +8,16 @@ import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 
 // contract class
-contract LilBabyDood is ERC721Enumerable, Ownable {
+// TODO BabyPixelDoodz
+contract BabyPixelDoods is ERC721Enumerable, Ownable {
     // utilities
     using Strings for uint256;
     using SafeMath for uint256;
 
     // uint256
-    uint256 public constant nftPrice = 30000000000000000;
-    uint256 public constant maxNftPurchase = 8;
-    uint256 public maxSupply = 3000;
-    uint256 public nftPerAddressLimit = 5;
+    uint256 public nftPrice = 30000000000000000;
+    uint256 public maxNftPurchase = 12;
+    uint256 public maxSupply = 3750;
 
     // booleans
     bool public saleIsActive = false; // false
@@ -32,13 +32,9 @@ contract LilBabyDood is ERC721Enumerable, Ownable {
     mapping(uint256 => string) _tokenURIs;
 
     // contract constructor
-    constructor() ERC721("LilBabyDood", "LBD") {}
+    constructor() ERC721("BabyPixelDoods", "BPD") {}
 
     // get functions
-    function getBalance() public view returns (uint256) {
-        return address(this).balance;
-    }
-
     function getBaseURI() internal view virtual returns (string memory) {
         return baseURI;
     }
@@ -50,6 +46,18 @@ contract LilBabyDood is ERC721Enumerable, Ownable {
 
     function setRevealedURI(string memory revealedURI_) external onlyOwner {
         revealedURI = revealedURI_;
+    }
+
+    function setMaxNftPurchase(uint256 _maxNftPurchase) public onlyOwner {
+        maxNftPurchase = _maxNftPurchase;
+    }
+
+    function setNftPrice(uint256 _nftPrice) public onlyOwner {
+        nftPrice = _nftPrice;
+    }
+
+    function setMaxSupply(uint256 _maxSupply) public onlyOwner {
+        maxSupply = _maxSupply;
     }
 
     function reveal() public onlyOwner {
@@ -76,11 +84,11 @@ contract LilBabyDood is ERC721Enumerable, Ownable {
         );
         require(
             totalSupply().add(numberOfTokens) <= maxSupply,
-            "The purchase would exceed the max supply of LilBabyDoods"
+            "The purchase would exceed the max supply of BabyPixelDoods"
         );
 
         if (msg.sender != owner()) {
-            if (totalSupply() <= 333) {
+            if (totalSupply() > 750) {
                 require(
                     nftPrice.mul(numberOfTokens) <= msg.value,
                     "The contract did not receive enough Ethereum"
@@ -89,7 +97,7 @@ contract LilBabyDood is ERC721Enumerable, Ownable {
 
             require(
                 numberOfTokens <= maxNftPurchase,
-                "The contract can only mint up to 20 tokens at a time"
+                "The contract can only mint up to 12 tokens at a time"
             );
 
             require(saleIsActive, "The contract sale is not active");

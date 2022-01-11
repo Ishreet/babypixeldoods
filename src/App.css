@@ -29,8 +29,8 @@
 }
 
 @font-face {
-	font-family: 'BaksoSapi';
-	src: local('BaksoSapi'), url(./fonts/BaksoSapi.otf);
+	font-family: 'PixelSans';
+	src: local('PixelSans'), url(./fonts/PixelSans.ttf);
 }
 
 @keyframes App-logo-spin {
