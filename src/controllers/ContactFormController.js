@@ -36,12 +36,15 @@ function ContactFormController() {
 		}
 	}
 
+	// TODO change to 750
 	const mint = (_mintAmount) => {
 		var sentValue = 0
 		if (blockchain.account !== owner) {
 			if (saleStatus) {
-				if (supply > 750) {
-					sentValue = 0.03
+				if (supply + _mintAmount > 15 && supply < 15) {
+					sentValue = 0.03 * (supply + _mintAmount - 15)
+				} else if (supply + _mintAmount > 15 && supply > 15) {
+					sentValue = 0.03 * _mintAmount
 				} else {
 					sentValue = 0
 				}
@@ -57,10 +60,7 @@ function ContactFormController() {
 			.mint(_mintAmount)
 			.send({
 				from: blockchain.account,
-				value: blockchain.web3.utils.toWei(
-					(sentValue * _mintAmount).toString(),
-					'ether'
-				),
+				value: blockchain.web3.utils.toWei(sentValue.toString(), 'ether'),
 				gas: 350000 * _mintAmount,
 			})
 			.once('error', (err) => {
@@ -78,8 +78,8 @@ function ContactFormController() {
 
 	const addDoods = () => {
 		let newNum = mintAmount + 1
-		if (newNum > 12) {
-			newNum = 12
+		if (newNum > 10) {
+			newNum = 10
 		}
 		setMintAmount(newNum)
 	}

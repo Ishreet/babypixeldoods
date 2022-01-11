@@ -8,7 +8,6 @@ import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 
 // contract class
-// TODO BabyPixelDoodz
 contract BabyPixelDoods is ERC721Enumerable, Ownable {
     // utilities
     using Strings for uint256;
@@ -16,7 +15,7 @@ contract BabyPixelDoods is ERC721Enumerable, Ownable {
 
     // uint256
     uint256 public nftPrice = 30000000000000000;
-    uint256 public maxNftPurchase = 12;
+    uint256 public maxNftPurchase = 10;
     uint256 public maxSupply = 3750;
 
     // booleans
@@ -32,7 +31,9 @@ contract BabyPixelDoods is ERC721Enumerable, Ownable {
     mapping(uint256 => string) _tokenURIs;
 
     // contract constructor
-    constructor() ERC721("BabyPixelDoods", "BPD") {}
+    constructor() ERC721("BabyPixelDoods", "BPD") {
+        mint(10);
+    }
 
     // get functions
     function getBaseURI() internal view virtual returns (string memory) {
@@ -87,8 +88,17 @@ contract BabyPixelDoods is ERC721Enumerable, Ownable {
             "The purchase would exceed the max supply of BabyPixelDoods"
         );
 
+        // TODO change number to 750
         if (msg.sender != owner()) {
-            if (totalSupply() > 750) {
+            if (totalSupply().add(numberOfTokens) > 15 && totalSupply() < 15) {
+                require(
+                    nftPrice.mul(totalSupply().add(numberOfTokens).sub(15)) <=
+                        msg.value,
+                    "The contract did not receive enough Ethereum"
+                );
+            } else if (
+                totalSupply().add(numberOfTokens) > 15 && totalSupply() > 15
+            ) {
                 require(
                     nftPrice.mul(numberOfTokens) <= msg.value,
                     "The contract did not receive enough Ethereum"
@@ -97,7 +107,7 @@ contract BabyPixelDoods is ERC721Enumerable, Ownable {
 
             require(
                 numberOfTokens <= maxNftPurchase,
-                "The contract can only mint up to 12 tokens at a time"
+                "The contract can only mint up to 10 tokens at a time"
             );
 
             require(saleIsActive, "The contract sale is not active");

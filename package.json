@@ -60,6 +60,6 @@
 	},
 	"devDependencies": {
 		"nodemon": "^2.0.13",
-		"truffle-plugin-verify": "^0.5.15"
+		"truffle-plugin-verify": "^0.5.20"
 	}
 }
