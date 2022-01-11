@@ -89,7 +89,9 @@ function ContactFormController() {
 				setLoading(false)
 				dispatch(fetchData(blockchain.account))
 				setMintAmount(1)
-				setStatus('SUCCESS!')
+				setStatus(
+					'SUCCESS! AAAAAAAAAAGASLKFDGNA;SLGNA;SLGNA;SRLGNA;SDLGNASLGDN;ASLD'
+				)
 			})
 	}
 
