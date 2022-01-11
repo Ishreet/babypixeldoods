@@ -23,16 +23,16 @@ function ContactFormController() {
 	const startProcess = async () => {
 		if ((saleStatus && publicSaleStatus) || blockchain.account === owner) {
 			setLoading(true)
-			setStatus('MINTING YOUR LILBABYDOODZ...')
+			setStatus('MINTING...')
 			try {
 				mint(mintAmount)
 			} catch (err) {
 				setLoading(false)
-				setStatus('UNEXPECTED ERROR OCCURED :(')
+				setStatus('ERROR')
 			}
 		} else if (blockchain.account === owner) {
 		} else {
-			setStatus('SORRY, MINTING IS NOT LIVE RIGHT NOW')
+			setStatus('MINT NOT LIVE')
 			return
 		}
 	}
@@ -41,14 +41,14 @@ function ContactFormController() {
 		var sentValue = 0
 		if (blockchain.account !== owner) {
 			if (publicSaleStatus === false) {
-				if (_mintAmount > 5) {
+				if (_mintAmount > 8) {
 					setStatus('YOU CANNOT MINT MORE THAN 5 RIGHT NOW')
 					return
 				} else if (_mintAmount == 0) {
 					setStatus('YOU CANNOT MINT THAN 0 LILBABYDOODZ')
 					return
 				} else {
-					sentValue = 0.05
+					sentValue = 0.03
 				}
 			} else if (publicSaleStatus === true) {
 				if (_mintAmount > 20) {
@@ -58,7 +58,7 @@ function ContactFormController() {
 					setStatus('YOU CANNOT MINT THAN 0 LILBABYDOODZ')
 					return
 				} else {
-					sentValue = 0.05
+					sentValue = 0.03
 				}
 			} else {
 				setStatus("UNFORTUNATELY YOU CAN'T MINT YET")
@@ -89,7 +89,7 @@ function ContactFormController() {
 				setLoading(false)
 				dispatch(fetchData(blockchain.account))
 				setMintAmount(1)
-				setStatus('SUCCESS! YOUR LILBABYDOODZ ARE NOW ON THE BLOCKCHAIN!')
+				setStatus('SUCCESS!')
 			})
 	}
 
@@ -168,14 +168,14 @@ function ContactFormController() {
 			console.log('sale status', publicSaleStatus)
 			if (saleStatus && !(blockchain.account === owner)) {
 				if (publicSaleStatus) {
-					setStatus('MINTING IS NOW LIVE!')
+					setStatus('MINT LIVE!')
 					setButtonName('MINT')
 				} else {
-					setStatus('SORRY, MINTING IS NOT LIVE RIGHT NOW')
+					setStatus('MINT LIVE!')
 					setButtonName('UNAVAILABLE')
 				}
 			} else if (blockchain.account === owner) {
-				setStatus('MINTING IS NOW LIVE!')
+				setStatus('MINT LIVE!')
 				setButtonName('MINT')
 			}
 		} else {
@@ -236,7 +236,7 @@ function ContactFormController() {
 					<s.SpacerSmall />
 
 					<s.Container flex={1} ai={'center'} jc={'center'}>
-						<div style={{ display: 'flex', float: 'left' }}>
+						<div style={{ display: 'flex' }}>
 							<div>
 								<button
 									style={{
