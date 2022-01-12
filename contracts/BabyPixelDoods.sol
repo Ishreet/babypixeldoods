@@ -1720,7 +1720,7 @@ contract BabyPixelDoods is ERC721Enumerable, Ownable {
 
     // contract constructor
     constructor() ERC721("BabyPixelDoods", "BPD") {
-        // mint(10);
+        mint(10);
     }
 
     // get functions
