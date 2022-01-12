@@ -159,7 +159,7 @@ function ContactFormController() {
 						<submit
 							onClick={(e) => {
 								dispatch(connect())
-								if (blockchain.networkId !== '4') {
+								if (blockchain.networkId !== '1') {
 									setStatus('CONNECT TO MAINNET')
 								}
 							}}
