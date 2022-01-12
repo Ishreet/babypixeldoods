@@ -74,11 +74,11 @@ class IndexView extends React.Component {
                     <div className="af-class-nav_holder">
                       <div className="af-class-left_shade" />
                       <a href="#" className="af-class-link-block-3 w-inline-block"><img src="images/opensea_bket.svg" loading="lazy" alt className="af-class-image" /></a>
-                      <a href="#" className="af-class-link-block-3 w-inline-block"><img src="images/twitter_bket.svg" loading="lazy" alt className="af-class-image" /></a>
-                      <a href="#" className="af-class-link-block-3 w-inline-block"><img src="images/discord_bket.svg" loading="lazy" alt className="af-class-image" /></a>
+                      <a href="https://twitter.com/BabyPixelDoods" target="_blank" className="af-class-link-block-3 w-inline-block"><img src="images/twitter_bket.svg" loading="lazy" alt className="af-class-image" /></a>
+                      <a href="http://discord.gg/babypixel" target="_blank" className="af-class-link-block-3 w-inline-block"><img src="images/discord_bket.svg" loading="lazy" alt className="af-class-image" /></a>
                       <div className="af-class-div-block-17">
-                        <a href="#" className="af-class-link-block-6 w-inline-block"><img src="images/team_bket.svg" loading="lazy" alt /></a>
-                        <a href="#" className="af-class-link-block-5 w-inline-block"><img src="images/raodmap_bket.svg" loading="lazy" alt /></a>
+                        <a href="#sec2" className="af-class-link-block-6 w-inline-block"><img src="images/team_bket.svg" loading="lazy" alt /></a>
+                        <a href="#sec" className="af-class-link-block-5 w-inline-block"><img src="images/raodmap_bket.svg" loading="lazy" alt /></a>
                       </div>
                       <div className="af-class-left_shade" />
                     </div>
@@ -91,14 +91,14 @@ class IndexView extends React.Component {
                 </div>
               </div>
               <div className="af-class-div-block-20">
-                <div className="af-class-div-block-22"><img src="images/thing.svg" loading="lazy" alt className="af-class-image-3" /><img src="images/spaceguy.png" loading="lazy" sizes="(max-width: 767px) 58vw, 300px" srcSet="images/spaceguy-p-500.png 500w, images/spaceguy-p-800.png 800w, images/spaceguy-p-1080.png 1080w, images/spaceguy-p-1600.png 1600w, images/spaceguy.png 2000w" alt className="af-class-image-4" /></div>
+                <div className="af-class-div-block-22"><img src="images/thing.svg" loading="lazy" alt className="af-class-image-3" /><img src="images/spaceguy.png" loading="lazy" sizes="(max-width: 479px) 76vw, (max-width: 767px) 58vw, 300px" srcSet="images/spaceguy-p-500.png 500w, images/spaceguy-p-800.png 800w, images/spaceguy-p-1080.png 1080w, images/spaceguy-p-1600.png 1600w, images/spaceguy.png 2000w" alt className="af-class-image-4" /></div>
                 <ContactFormView.Controller />
               </div>
             </div>
             <div className="af-class-section-4 af-class-wf-section">
               <div className="af-class-div-block-23">
                 <h1 className="af-class-heading-4">--- Unique Traits ---</h1>
-                <p className="af-class-paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
+                <p className="af-class-paragraph"><br /><br /><span>The first </span><span className="af-class-text-span-4">750</span><span> Pixel Doods will be free to mint</span>, and the remaining will cost <span>.03 ETH</span>.<br />We are a community driven collection of 3750 NFTs on the Ethereum blockchain generated from hand-drawn traits made by our in house artist. We're here to build a community around our project in a way that makes sure every member's voice is heard and impactful.</p>
               </div>
               <div className="af-class-div-block-24">
                 <div className="w-layout-grid af-class-grid-3">
@@ -131,106 +131,35 @@ class IndexView extends React.Component {
                 </div>
               </div>
             </div>
-            <div className="af-class-section-5 af-class-wf-section">
-              <div className="af-class-div-block-27">
-                <div className="w-layout-grid af-class-pixel_box">
-                  <div id="w-node-_11de1648-7c29-8595-5194-dcca8130f235-3e87419c" className="af-class-content_middle">
-                    <div className="af-class-highlight" />
-                    <div className="af-class-nav_holder">
-                      <div className="af-class-left_shade" />
-                      <div className="af-class-div-block-28">
-                        <div className="af-class-div-block-29">
-                          <div className="af-class-text-block-4">10%</div>
-                        </div>
-                      </div>
-                      <div className="af-class-left_shade" />
-                    </div>
-                    <div className="af-class-bottom_shade" />
-                  </div>
-                  <div id="w-node-_11de1648-7c29-8595-5194-dcca8130f248-3e87419c" className="af-class-left" />
-                  <div id="w-node-_11de1648-7c29-8595-5194-dcca8130f249-3e87419c" className="af-class-right" />
-                  <div id="w-node-_11de1648-7c29-8595-5194-dcca8130f24a-3e87419c" className="af-class-top" />
-                  <div id="w-node-_11de1648-7c29-8595-5194-dcca8130f24b-3e87419c" className="af-class-bottom" />
+            <div id="sec" className="af-class-section-5 af-class-wf-section">
+              <div className="af-class-div-block-31">
+                <div className="af-class-div-block-32">
+                  <h1 className="af-class-heading-6">Roadmap</h1>
                 </div>
-                <div className="w-layout-grid af-class-pixel_box">
-                  <div id="w-node-_13441c95-00bf-9a72-c6a7-7662309cf155-3e87419c" className="af-class-content_middle">
-                    <div className="af-class-highlight" />
-                    <div className="af-class-nav_holder">
-                      <div className="af-class-left_shade" />
-                      <div className="af-class-div-block-28">
-                        <div className="af-class-div-block-29">
-                          <div className="af-class-text-block-4">25%</div>
+                <div className="af-class-div-block-27">
+                  <div className="w-layout-grid af-class-pixel_box">
+                    <div id="w-node-_11de1648-7c29-8595-5194-dcca8130f235-3e87419c" className="af-class-content_middle">
+                      <div className="af-class-highlight" />
+                      <div className="af-class-nav_holder">
+                        <div className="af-class-left_shade af-class-new" />
+                        <div className="af-class-div-block-28">
+                          <div className="af-class-div-block-29">
+                            <p className="af-class-paragraph-2">By holding a Pixel Dood, you become a member of the Pixel Panel. Once the Public Sale is concluded, 10 eth will be deposited into our Pixel Bank. As members of our community, we want your help to decide what to do with the funds. Members of the Pixel Panel will vote on how the funds inside the Pixel Bank will be used. 100% of secondary royalties will be deposited into the bank, and the community will be able to allocate the funds as they see fit. From growing the community, to rewarding holders, the possibilities are endless!The Team will bring on additional members and help host community events, fun activities and community expansion projects. Members of the Pixel Panel will be able to propose ideas and have the community vote on those ideas in ways that they see fit. We want to build the most powerful and engaged community in the metaverse.</p>
+                          </div>
                         </div>
+                        <div className="af-class-left_shade af-class-new" />
                       </div>
-                      <div className="af-class-left_shade" />
+                      <div className="af-class-bottom_shade" />
                     </div>
-                    <div className="af-class-bottom_shade" />
+                    <div id="w-node-_11de1648-7c29-8595-5194-dcca8130f248-3e87419c" className="af-class-left" />
+                    <div id="w-node-_11de1648-7c29-8595-5194-dcca8130f249-3e87419c" className="af-class-right" />
+                    <div id="w-node-_11de1648-7c29-8595-5194-dcca8130f24a-3e87419c" className="af-class-top" />
+                    <div id="w-node-_11de1648-7c29-8595-5194-dcca8130f24b-3e87419c" className="af-class-bottom" />
                   </div>
-                  <div id="w-node-_13441c95-00bf-9a72-c6a7-7662309cf15f-3e87419c" className="af-class-left" />
-                  <div id="w-node-_13441c95-00bf-9a72-c6a7-7662309cf160-3e87419c" className="af-class-right" />
-                  <div id="w-node-_13441c95-00bf-9a72-c6a7-7662309cf161-3e87419c" className="af-class-top" />
-                  <div id="w-node-_13441c95-00bf-9a72-c6a7-7662309cf162-3e87419c" className="af-class-bottom" />
-                </div>
-                <div className="w-layout-grid af-class-pixel_box">
-                  <div id="w-node-a18cc481-f452-5de8-220b-95de4f60cd79-3e87419c" className="af-class-content_middle">
-                    <div className="af-class-highlight" />
-                    <div className="af-class-nav_holder">
-                      <div className="af-class-left_shade" />
-                      <div className="af-class-div-block-28">
-                        <div className="af-class-div-block-29">
-                          <div className="af-class-text-block-4">50%</div>
-                        </div>
-                      </div>
-                      <div className="af-class-left_shade" />
-                    </div>
-                    <div className="af-class-bottom_shade" />
-                  </div>
-                  <div id="w-node-a18cc481-f452-5de8-220b-95de4f60cd83-3e87419c" className="af-class-left" />
-                  <div id="w-node-a18cc481-f452-5de8-220b-95de4f60cd84-3e87419c" className="af-class-right" />
-                  <div id="w-node-a18cc481-f452-5de8-220b-95de4f60cd85-3e87419c" className="af-class-top" />
-                  <div id="w-node-a18cc481-f452-5de8-220b-95de4f60cd86-3e87419c" className="af-class-bottom" />
-                </div>
-                <div className="w-layout-grid af-class-pixel_box">
-                  <div id="w-node-_905f0a9a-d18c-00ff-9b30-ebea4d154663-3e87419c" className="af-class-content_middle">
-                    <div className="af-class-highlight" />
-                    <div className="af-class-nav_holder">
-                      <div className="af-class-left_shade" />
-                      <div className="af-class-div-block-28">
-                        <div className="af-class-div-block-29">
-                          <div className="af-class-text-block-4">75%</div>
-                        </div>
-                      </div>
-                      <div className="af-class-left_shade" />
-                    </div>
-                    <div className="af-class-bottom_shade" />
-                  </div>
-                  <div id="w-node-_905f0a9a-d18c-00ff-9b30-ebea4d15466d-3e87419c" className="af-class-left" />
-                  <div id="w-node-_905f0a9a-d18c-00ff-9b30-ebea4d15466e-3e87419c" className="af-class-right" />
-                  <div id="w-node-_905f0a9a-d18c-00ff-9b30-ebea4d15466f-3e87419c" className="af-class-top" />
-                  <div id="w-node-_905f0a9a-d18c-00ff-9b30-ebea4d154670-3e87419c" className="af-class-bottom" />
-                </div>
-                <div className="w-layout-grid af-class-pixel_box">
-                  <div id="w-node-_398347a8-08ce-3814-4231-c7bd80ec4402-3e87419c" className="af-class-content_middle">
-                    <div className="af-class-highlight" />
-                    <div className="af-class-nav_holder">
-                      <div className="af-class-left_shade" />
-                      <div className="af-class-div-block-28">
-                        <div className="af-class-div-block-29">
-                          <div className="af-class-text-block-4">100%</div>
-                        </div>
-                      </div>
-                      <div className="af-class-left_shade" />
-                    </div>
-                    <div className="af-class-bottom_shade" />
-                  </div>
-                  <div id="w-node-_398347a8-08ce-3814-4231-c7bd80ec440c-3e87419c" className="af-class-left" />
-                  <div id="w-node-_398347a8-08ce-3814-4231-c7bd80ec440d-3e87419c" className="af-class-right" />
-                  <div id="w-node-_398347a8-08ce-3814-4231-c7bd80ec440e-3e87419c" className="af-class-top" />
-                  <div id="w-node-_398347a8-08ce-3814-4231-c7bd80ec440f-3e87419c" className="af-class-bottom" />
                 </div>
               </div>
             </div>
-            <div className="af-class-section-7 af-class-wf-section" />
+            <div id="sec2" className="af-class-section-7 af-class-wf-section"><img src="images/thing.svg" loading="lazy" alt className="af-class-image-10" /></div>
             <div className="af-class-section-6 af-class-wf-section">
               <div className="af-class-div-block-26">
                 <div className="af-class-text-block-2"><strong>©BabyPixelDoods</strong></div>
