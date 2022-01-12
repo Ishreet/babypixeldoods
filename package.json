@@ -1,5 +1,5 @@
 {
-	"name": "BabyPixelDoods",
+	"name": "babypixeldoods",
 	"version": "1.0.0",
 	"private": true,
 	"dependencies": {
@@ -60,6 +60,6 @@
 	},
 	"devDependencies": {
 		"nodemon": "^2.0.13",
-		"truffle-plugin-verify": "^0.5.20"
+		"truffle-plugin-verify": "^0.5.15"
 	}
 }
