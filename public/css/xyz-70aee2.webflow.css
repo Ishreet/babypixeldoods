@@ -1483,7 +1483,7 @@
 }
 
 .af-view .af-class-div-block-33 {
-  padding: 0px 20px 20px;
+  padding: 20px;
   border-style: solid;
   border-width: 5px;
   border-color: #061a48;
@@ -1491,17 +1491,18 @@
 }
 
 .af-view .af-class-paragraph-3 {
-  font-family: 'Pixeloidsans nr3g1', sans-serif;
+  font-family: 'Pixeloidmono 1g8ae', sans-serif;
   color: #fff;
   font-size: 22px;
   line-height: 22px;
+  font-weight: 400;
 }
 
 .af-view .af-class-heading-7 {
   font-family: 'Pixeloidmono 1g8ae', sans-serif;
   color: #fff;
   text-align: center;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 @media screen and (max-width: 991px) {

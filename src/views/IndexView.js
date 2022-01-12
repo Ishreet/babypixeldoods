@@ -133,11 +133,10 @@ class IndexView extends React.Component {
             </div>
             <div id="sec" className="af-class-section-5 af-class-wf-section">
               <div className="af-class-div-block-33">
-                <h1 className="af-class-heading-7">Roadmap</h1>
                 <p className="af-class-paragraph-3">By holding a Pixel Dood, you become a member of the Pixel Panel. Once the Public Sale is concluded, 10 eth will be deposited into our Pixel Bank. As members of our community, we want your help to decide what to do with the funds. Members of the Pixel Panel will vote on how the funds inside the Pixel Bank will be used. 100% of secondary royalties will be deposited into the bank, and the community will be able to allocate the funds as they see fit. From growing the community, to rewarding holders, the possibilities are endless!The Team will bring on additional members and help host community events, fun activities and community expansion projects. Members of the Pixel Panel will be able to propose ideas and have the community vote on those ideas in ways that they see fit. We want to build the most powerful and engaged community in the metaverse.</p>
               </div>
             </div>
-            <div id="sec2" className="af-class-section-7 af-class-wf-section"><img src="images/thing.svg" loading="lazy" alt className="af-class-image-10" /></div>
+            <div id="sec2" className="af-class-section-7 af-class-wf-section"><img src="images/thing2.svg" loading="lazy" alt /></div>
             <div className="af-class-section-6 af-class-wf-section">
               <div className="af-class-div-block-26">
                 <div className="af-class-text-block-2"><strong>©BabyPixelDoods</strong></div>
