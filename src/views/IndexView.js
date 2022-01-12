@@ -73,12 +73,12 @@ class IndexView extends React.Component {
                     <div className="af-class-highlight" />
                     <div className="af-class-nav_holder">
                       <div className="af-class-left_shade" />
-                      <a href="#" className="af-class-link-block-3 w-inline-block"><img src="images/opensea_bket.svg" loading="lazy" alt className="af-class-image" /></a>
+                      <a href="https://opensea.io/collection/baby-pixel-doods" target="_blank" className="af-class-link-block-3 w-inline-block"><img src="images/opensea_bket.svg" loading="lazy" alt className="af-class-image" /></a>
                       <a href="https://twitter.com/BabyPixelDoods" target="_blank" className="af-class-link-block-3 w-inline-block"><img src="images/twitter_bket.svg" loading="lazy" alt className="af-class-image" /></a>
                       <a href="http://discord.gg/babypixel" target="_blank" className="af-class-link-block-3 w-inline-block"><img src="images/discord_bket.svg" loading="lazy" alt className="af-class-image" /></a>
                       <div className="af-class-div-block-17">
                         <a href="#" className="af-class-link-block-6 w-inline-block"><img src="images/team_bket.svg" loading="lazy" alt /></a>
-                        <a href="#" className="af-class-link-block-5 w-inline-block"><img src="images/raodmap_bket.svg" loading="lazy" alt /></a>
+                        <a href="https://medium.com/@babypixeldood/welcome-to-the-baby-pixel-doods-community-3836cd4fbc0c" target="_blank" className="af-class-link-block-5 w-inline-block"><img src="images/raodmap_bket.svg" loading="lazy" alt /></a>
                       </div>
                       <div className="af-class-left_shade" />
                     </div>
@@ -105,35 +105,30 @@ class IndexView extends React.Component {
                   <div id="w-node-_0323587e-e3b7-2c2d-a59c-91f2b9bbbdc2-3e87419c" className="af-class-pictop" />
                   <div id="w-node-_0fa02c04-50d1-c834-b18f-f2b6a78b9f3e-3e87419c" className="af-class-picleft" />
                   <div id="w-node-d0d1c74b-cc3d-bdce-e0a3-ea46fd3cd9dd-3e87419c" className="af-class-picbot" />
-                  <div id="w-node-daffcf38-562d-6c12-faad-1a9b6313058c-3e87419c" className="af-class-picmid"><img src="images/asset1.svg" loading="lazy" alt className="af-class-image-9" /></div>
+                  <div id="w-node-daffcf38-562d-6c12-faad-1a9b6313058c-3e87419c" className="af-class-picmid"><img src="images/thing1.svg" loading="lazy" alt className="af-class-image-9" /></div>
                   <div id="w-node-_7f8a17cf-ba81-0f6e-aad7-828bc8f0834d-3e87419c" className="af-class-picright" />
                 </div>
                 <div className="w-layout-grid af-class-grid-3">
                   <div id="w-node-e4e1f7a3-a908-f5d0-1286-c89f26b3b9d8-3e87419c" className="af-class-pictop" />
                   <div id="w-node-e4e1f7a3-a908-f5d0-1286-c89f26b3b9d9-3e87419c" className="af-class-picleft" />
                   <div id="w-node-e4e1f7a3-a908-f5d0-1286-c89f26b3b9da-3e87419c" className="af-class-picbot" />
-                  <div id="w-node-e4e1f7a3-a908-f5d0-1286-c89f26b3b9db-3e87419c" className="af-class-picmid"><img src="images/asset2.svg" loading="lazy" alt className="af-class-image-8" /></div>
+                  <div id="w-node-e4e1f7a3-a908-f5d0-1286-c89f26b3b9db-3e87419c" className="af-class-picmid"><img src="images/thing2.svg" loading="lazy" alt className="af-class-image-8" /></div>
                   <div id="w-node-e4e1f7a3-a908-f5d0-1286-c89f26b3b9dd-3e87419c" className="af-class-picright" />
                 </div>
                 <div className="w-layout-grid af-class-grid-3">
                   <div id="w-node-aaeef5df-5fda-fabe-d02f-71d8e4645820-3e87419c" className="af-class-pictop" />
                   <div id="w-node-aaeef5df-5fda-fabe-d02f-71d8e4645821-3e87419c" className="af-class-picleft" />
                   <div id="w-node-aaeef5df-5fda-fabe-d02f-71d8e4645822-3e87419c" className="af-class-picbot" />
-                  <div id="w-node-aaeef5df-5fda-fabe-d02f-71d8e4645823-3e87419c" className="af-class-picmid"><img src="images/asset3.svg" loading="lazy" alt className="af-class-image-6" /></div>
+                  <div id="w-node-aaeef5df-5fda-fabe-d02f-71d8e4645823-3e87419c" className="af-class-picmid"><img src="images/thing3.svg" loading="lazy" alt className="af-class-image-6" /></div>
                   <div id="w-node-aaeef5df-5fda-fabe-d02f-71d8e4645825-3e87419c" className="af-class-picright" />
                 </div>
                 <div className="w-layout-grid af-class-grid-3">
                   <div id="w-node-_92f4d612-0f14-bb86-8a3e-4ece30cf572c-3e87419c" className="af-class-pictop" />
                   <div id="w-node-_92f4d612-0f14-bb86-8a3e-4ece30cf572d-3e87419c" className="af-class-picleft" />
                   <div id="w-node-_92f4d612-0f14-bb86-8a3e-4ece30cf572e-3e87419c" className="af-class-picbot" />
-                  <div id="w-node-_92f4d612-0f14-bb86-8a3e-4ece30cf572f-3e87419c" className="af-class-picmid"><img src="images/asset4.svg" loading="lazy" alt className="af-class-image-7" /></div>
+                  <div id="w-node-_92f4d612-0f14-bb86-8a3e-4ece30cf572f-3e87419c" className="af-class-picmid"><img src="images/thing4.svg" loading="lazy" alt className="af-class-image-7" /></div>
                   <div id="w-node-_92f4d612-0f14-bb86-8a3e-4ece30cf5731-3e87419c" className="af-class-picright" />
                 </div>
-              </div>
-            </div>
-            <div className="af-class-section-5 af-class-wf-section">
-              <div className="af-class-div-block-33">
-                <p className="af-class-paragraph">By holding a Pixel Dood, you become a member of the Pixel Panel. Once the Public Sale is concluded, 10 eth will be deposited into our Pixel Bank. As members of our community, we want your help to decide what to do with the funds. Members of the Pixel Panel will vote on how the funds inside the Pixel Bank will be used. 100% of secondary royalties will be deposited into the bank, and the community will be able to allocate the funds as they see fit. From growing the community, to rewarding holders, the possibilities are endless!The Team will bring on additional members and help host community events, fun activities and community expansion projects. Members of the Pixel Panel will be able to propose ideas and have the community vote on those ideas in ways that they see fit. We want to build the most powerful and engaged community in the metaverse.</p>
               </div>
             </div>
             <div className="af-class-section-6 af-class-wf-section">
