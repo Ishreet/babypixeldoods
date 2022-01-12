@@ -77,7 +77,6 @@ class IndexView extends React.Component {
                       <a href="https://twitter.com/BabyPixelDoods" target="_blank" className="af-class-link-block-3 w-inline-block"><img src="images/twitter_bket.svg" loading="lazy" alt className="af-class-image" /></a>
                       <a href="http://discord.gg/babypixel" target="_blank" className="af-class-link-block-3 w-inline-block"><img src="images/discord_bket.svg" loading="lazy" alt className="af-class-image" /></a>
                       <div className="af-class-div-block-17">
-                        <a href="#" className="af-class-link-block-6 w-inline-block"><img src="images/team_bket.svg" loading="lazy" alt /></a>
                         <a href="https://medium.com/@babypixeldood/welcome-to-the-baby-pixel-doods-community-3836cd4fbc0c" target="_blank" className="af-class-link-block-5 w-inline-block"><img src="images/raodmap_bket.svg" loading="lazy" alt /></a>
                       </div>
                       <div className="af-class-left_shade" />
@@ -134,7 +133,6 @@ class IndexView extends React.Component {
             <div className="af-class-section-6 af-class-wf-section">
               <div className="af-class-div-block-26">
                 <div className="af-class-text-block-2"><strong>©BabyPixelDoods</strong></div>
-                <div className="af-class-text-block-3">Terms and Policy</div>
               </div>
               <div>
                 <a href="#" className="af-class-link-block-3 w-inline-block"><img src="images/opensea_bket.svg" loading="lazy" alt className="af-class-image" /></a>
