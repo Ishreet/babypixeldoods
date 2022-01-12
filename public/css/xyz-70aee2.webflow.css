@@ -1089,6 +1089,11 @@
   text-align: center;
 }
 
+.af-view .af-class-paragraph.af-class-_2 {
+  margin-bottom: 0px;
+  color: #fff;
+}
+
 .af-view .af-class-div-block-24 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1206,7 +1211,7 @@
   -ms-flex-align: center;
   align-items: center;
   border-top: 5px solid #461edb;
-  border-bottom: 5px solid #6c50d5;
+  border-bottom: 5px none #6c50d5;
   background-color: #3719aa;
 }
 
@@ -1268,10 +1273,7 @@
 }
 
 .af-view .af-class-section-7 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: none;
   width: 100vw;
   height: 70vh;
   -webkit-box-pack: center;
