@@ -132,32 +132,6 @@ class IndexView extends React.Component {
               </div>
             </div>
             <div id="sec" className="af-class-section-5 af-class-wf-section">
-              <div className="af-class-div-block-31">
-                <div className="af-class-div-block-32">
-                  <h1 className="af-class-heading-6">Roadmap</h1>
-                </div>
-                <div className="af-class-div-block-27">
-                  <div className="w-layout-grid af-class-pixel_box">
-                    <div id="w-node-_11de1648-7c29-8595-5194-dcca8130f235-3e87419c" className="af-class-content_middle">
-                      <div className="af-class-highlight" />
-                      <div className="af-class-nav_holder">
-                        <div className="af-class-left_shade af-class-new" />
-                        <div className="af-class-div-block-28">
-                          <div className="af-class-div-block-29">
-                            <p className="af-class-paragraph-2">By holding a Pixel Dood, you become a member of the Pixel Panel. Once the Public Sale is concluded, 10 eth will be deposited into our Pixel Bank. As members of our community, we want your help to decide what to do with the funds. Members of the Pixel Panel will vote on how the funds inside the Pixel Bank will be used. 100% of secondary royalties will be deposited into the bank, and the community will be able to allocate the funds as they see fit. From growing the community, to rewarding holders, the possibilities are endless!The Team will bring on additional members and help host community events, fun activities and community expansion projects. Members of the Pixel Panel will be able to propose ideas and have the community vote on those ideas in ways that they see fit. We want to build the most powerful and engaged community in the metaverse.</p>
-                          </div>
-                        </div>
-                        <div className="af-class-left_shade af-class-new" />
-                      </div>
-                      <div className="af-class-bottom_shade" />
-                    </div>
-                    <div id="w-node-_11de1648-7c29-8595-5194-dcca8130f248-3e87419c" className="af-class-left" />
-                    <div id="w-node-_11de1648-7c29-8595-5194-dcca8130f249-3e87419c" className="af-class-right" />
-                    <div id="w-node-_11de1648-7c29-8595-5194-dcca8130f24a-3e87419c" className="af-class-top" />
-                    <div id="w-node-_11de1648-7c29-8595-5194-dcca8130f24b-3e87419c" className="af-class-bottom" />
-                  </div>
-                </div>
-              </div>
               <div className="af-class-div-block-33">
                 <h1 className="af-class-heading-7">Roadmap</h1>
                 <p className="af-class-paragraph-3">By holding a Pixel Dood, you become a member of the Pixel Panel. Once the Public Sale is concluded, 10 eth will be deposited into our Pixel Bank. As members of our community, we want your help to decide what to do with the funds. Members of the Pixel Panel will vote on how the funds inside the Pixel Bank will be used. 100% of secondary royalties will be deposited into the bank, and the community will be able to allocate the funds as they see fit. From growing the community, to rewarding holders, the possibilities are endless!The Team will bring on additional members and help host community events, fun activities and community expansion projects. Members of the Pixel Panel will be able to propose ideas and have the community vote on those ideas in ways that they see fit. We want to build the most powerful and engaged community in the metaverse.</p>
