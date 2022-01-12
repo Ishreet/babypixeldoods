@@ -77,8 +77,8 @@ class IndexView extends React.Component {
                       <a href="https://twitter.com/BabyPixelDoods" target="_blank" className="af-class-link-block-3 w-inline-block"><img src="images/twitter_bket.svg" loading="lazy" alt className="af-class-image" /></a>
                       <a href="http://discord.gg/babypixel" target="_blank" className="af-class-link-block-3 w-inline-block"><img src="images/discord_bket.svg" loading="lazy" alt className="af-class-image" /></a>
                       <div className="af-class-div-block-17">
-                        <a href="#sec2" className="af-class-link-block-6 w-inline-block"><img src="images/team_bket.svg" loading="lazy" alt /></a>
-                        <a href="#sec" className="af-class-link-block-5 w-inline-block"><img src="images/raodmap_bket.svg" loading="lazy" alt /></a>
+                        <a href="#" className="af-class-link-block-6 w-inline-block"><img src="images/team_bket.svg" loading="lazy" alt /></a>
+                        <a href="#" className="af-class-link-block-5 w-inline-block"><img src="images/raodmap_bket.svg" loading="lazy" alt /></a>
                       </div>
                       <div className="af-class-left_shade" />
                     </div>
@@ -131,7 +131,6 @@ class IndexView extends React.Component {
                 </div>
               </div>
             </div>
-            <div id="sec" className="af-class-wf-section" />
             <div className="af-class-section-5 af-class-wf-section">
               <div className="af-class-div-block-31">
                 <div className="af-class-div-block-32">
@@ -160,7 +159,6 @@ class IndexView extends React.Component {
                 </div>
               </div>
             </div>
-            <div id="sec2" className="af-class-wf-section" />
             <div className="af-class-section-7 af-class-wf-section"><img src="images/thing.svg" loading="lazy" alt className="af-class-image-10" /></div>
             <div className="af-class-section-6 af-class-wf-section">
               <div className="af-class-div-block-26">
