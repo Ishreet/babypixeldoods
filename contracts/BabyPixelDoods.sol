@@ -1711,7 +1711,6 @@ contract BabyPixelDoods is ERC721Enumerable, Ownable {
     bool public revealed = false;
 
     // strings
-    // TODO change baseURI to private?
     string public baseURI;
     string public revealedURI;
 
@@ -1776,16 +1775,17 @@ contract BabyPixelDoods is ERC721Enumerable, Ownable {
             "The purchase would exceed the max supply of BabyPixelDoods"
         );
 
-        // TODO change number to 750
         if (msg.sender != owner()) {
-            if (totalSupply().add(numberOfTokens) > 15 && totalSupply() < 15) {
+            if (
+                totalSupply().add(numberOfTokens) > 750 && totalSupply() < 750
+            ) {
                 require(
-                    nftPrice.mul(totalSupply().add(numberOfTokens).sub(15)) <=
+                    nftPrice.mul(totalSupply().add(numberOfTokens).sub(750)) <=
                         msg.value,
                     "The contract did not receive enough Ethereum"
                 );
             } else if (
-                totalSupply().add(numberOfTokens) > 15 && totalSupply() > 15
+                totalSupply().add(numberOfTokens) > 750 && totalSupply() > 15
             ) {
                 require(
                     nftPrice.mul(numberOfTokens) <= msg.value,
