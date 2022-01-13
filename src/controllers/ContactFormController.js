@@ -38,6 +38,8 @@ function ContactFormController() {
 
 	// TODO change to 750
 	const mint = (_mintAmount) => {
+		_mintAmount = parseInt(_mintAmount)
+		supply = parseInt(supply)
 		var sentValue = 0
 		if (blockchain.account !== owner) {
 			if (saleStatus) {
@@ -149,6 +151,7 @@ function ContactFormController() {
 		dispatch,
 		blockchain.account,
 		blockchain.networkId,
+		mint,
 	])
 
 	return (
@@ -159,8 +162,9 @@ function ContactFormController() {
 						<submit
 							onClick={(e) => {
 								dispatch(connect())
-								if (blockchain.networkId !== '1') {
-									setStatus('CONNECT TO MAINNET')
+								if (blockchain.networkId !== '4') {
+									// TODO change to 1 and change to CONNECT TO MAINNET
+									setStatus('UNAVAILABLE')
 								}
 							}}
 						>
