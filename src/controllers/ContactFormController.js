@@ -130,6 +130,7 @@ function ContactFormController() {
 			owner = await getOwner()
 			supply = await totalSupply()
 
+			setTotalMinted(`${supply}/3750`)
 			console.log('saleStatus: ', saleStatus)
 			console.log('owner: ', owner)
 			console.log('supply: ', supply)
@@ -254,6 +255,20 @@ function ContactFormController() {
 							}}
 						>
 							{status}
+						</s.TextDescription>
+					</s.Container>
+					<s.Container flex={1} ai={'center'} jc={'center'}>
+						<s.SpacerSmall />
+
+						<s.TextDescription
+							style={{
+								textAlign: 'center',
+								color: 'white',
+								fontFamily: 'PixelSans',
+								fontSize: 20,
+							}}
+						>
+							{totalMinted}
 						</s.TextDescription>
 					</s.Container>
 				</div>
