@@ -18,6 +18,7 @@ function ContactFormController() {
 	const [status, setStatus] = useState('')
 	const [mintAmount, setMintAmount] = useState(1)
 	const [buttonName, setButtonName] = useState('MINT')
+	const [totalMinted, setTotalMinted] = useState('0/3750')
 
 	const startProcess = async () => {
 		if (saleStatus) {
@@ -254,10 +255,6 @@ function ContactFormController() {
 						>
 							{status}
 						</s.TextDescription>
-
-						<s.SpacerSmall />
-						<Countdown date={'2021-01-11T12:00:00-04:00'} renderer={renderer} />
-						<s.SpacerMedium />
 					</s.Container>
 				</div>
 			)}
