@@ -1,6 +1,6 @@
 // constants
 import Web3 from 'web3'
-import SmartContract from '../../contracts/BabyPixelDoods.json'
+import BabyPixelDoods from '../../contracts/BabyPixelDoods.json'
 // log
 import { fetchData } from '../data/dataActions'
 
@@ -43,18 +43,18 @@ export const connect = () => {
 				const networkId = await window.ethereum.request({
 					method: 'net_version',
 				})
-				const NetworkData = await SmartContract.networks[networkId]
+				const NetworkData = await BabyPixelDoods.networks[networkId]
 				console.log('network data', NetworkData)
 				if (NetworkData) {
-					const SmartContractObj = new web3.eth.Contract(
-						SmartContract.abi,
+					const BabyPixelDoodsObj = new web3.eth.Contract(
+						BabyPixelDoods.abi,
 						NetworkData.address
 					)
 
 					dispatch(
 						connectSuccess({
 							account: accounts[0],
-							smartContract: SmartContractObj,
+							smartContract: BabyPixelDoodsObj,
 							networkId: networkId,
 							web3: web3,
 						})
@@ -71,10 +71,9 @@ export const connect = () => {
 					dispatch(connectFailed('Change network to Polygon.'))
 				}
 			} catch (err) {
-				console.log('failed deez')
 				dispatch(connectFailed('Something went wrong.'))
 			}
-		} else {
+		} else if (window.web3) {
 			let web3 = new Web3(window.web3.currentProvider)
 			try {
 				const accounts = await window.web3.currentProvider.request({
@@ -84,16 +83,16 @@ export const connect = () => {
 					method: 'net_version',
 				})
 
-				const NetworkData = await SmartContract.networks[networkId]
+				const NetworkData = await BabyPixelDoods.networks[networkId]
 				if (NetworkData) {
-					const SmartContractObj = new web3.eth.Contract(
-						SmartContract.abi,
+					const BabyPixelDoodsObj = new web3.eth.Contract(
+						BabyPixelDoods.abi,
 						NetworkData.address
 					)
 					dispatch(
 						connectSuccess({
 							account: accounts[0],
-							smartContract: SmartContractObj,
+							smartContract: BabyPixelDoodsObj,
 							networkId: networkId,
 							web3: web3,
 						})

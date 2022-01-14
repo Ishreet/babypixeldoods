@@ -20,7 +20,7 @@ function ContactFormController() {
 	const [buttonName, setButtonName] = useState('MINT')
 
 	const startProcess = async () => {
-		if (saleStatus || blockchain.account === owner) {
+		if (saleStatus) {
 			setLoading(true)
 			setStatus('MINTING...')
 			try {
@@ -29,8 +29,8 @@ function ContactFormController() {
 				setLoading(false)
 				setStatus('ERROR')
 			}
-		} else if (blockchain.account === owner) {
 		} else {
+			setButtonName('UNAVAILABLE')
 			setStatus('MINT NOT LIVE')
 			return
 		}
@@ -40,21 +40,17 @@ function ContactFormController() {
 		_mintAmount = parseInt(_mintAmount)
 		supply = parseInt(supply)
 		var sentValue = 0
-		if (blockchain.account !== owner) {
-			if (saleStatus) {
-				if (supply + _mintAmount > 750 && supply < 750) {
-					sentValue = 0.03 * (supply + _mintAmount - 750)
-				} else if (supply + _mintAmount > 750 && supply > 750) {
-					sentValue = 0.03 * _mintAmount
-				} else {
-					sentValue = 0
-				}
+		if (saleStatus) {
+			if (supply + _mintAmount > 750 && supply < 750) {
+				sentValue = 0.03 * (supply + _mintAmount - 750)
+			} else if (supply + _mintAmount > 750 && supply > 750) {
+				sentValue = 0.03 * _mintAmount
 			} else {
-				setStatus('UNAVAILABLE')
-				return
+				sentValue = 0
 			}
-		} else if (blockchain.account === owner) {
-			sentValue = 0
+		} else {
+			setStatus('UNAVAILABLE')
+			return
 		}
 
 		blockchain.smartContract.methods
@@ -62,7 +58,7 @@ function ContactFormController() {
 			.send({
 				from: blockchain.account,
 				value: blockchain.web3.utils.toWei(sentValue.toString(), 'ether'),
-				gas: 350000 * _mintAmount,
+				// gas: 150000 * _mintAmount,
 			})
 			.once('error', (err) => {
 				console.error(err)
@@ -136,12 +132,13 @@ function ContactFormController() {
 			console.log('saleStatus: ', saleStatus)
 			console.log('owner: ', owner)
 			console.log('supply: ', supply)
-			if (saleStatus && !(blockchain.account === owner)) {
+			console.log('account: ', blockchain.account)
+			if (saleStatus) {
 				setStatus('MINT IS LIVE!')
 				setButtonName('MINT')
-			} else if (blockchain.account === owner) {
-				setStatus('MINT IS LIVE!')
-				setButtonName('MINT')
+			} else {
+				setButtonName('UNAVAILABLE')
+				setStatus('MINT NOT LIVE')
 			}
 		} else {
 			setButtonName('UNAVAILABLE')
