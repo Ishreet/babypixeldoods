@@ -92,6 +92,7 @@ class IndexView extends React.Component {
               </div>
               <div className="af-class-div-block-20">
                 <div className="af-class-div-block-22"><img src="images/thing.svg" loading="lazy" alt className="af-class-image-3" /><img src="images/spaceguy.png" loading="lazy" sizes="(max-width: 479px) 76vw, (max-width: 767px) 58vw, 300px" srcSet="images/spaceguy-p-500.png 500w, images/spaceguy-p-800.png 800w, images/spaceguy-p-1080.png 1080w, images/spaceguy-p-1600.png 1600w, images/spaceguy.png 2000w" alt className="af-class-image-4" /></div>
+                <div className="af-class-text-block-6">If connection is unsuccessful, please connect to Metamask manually</div>
                 <ContactFormView.Controller />
               </div>
             </div>
