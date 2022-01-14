@@ -91,50 +91,83 @@ class IndexView extends React.Component {
                 </div>
               </div>
               <div className="af-class-div-block-20">
-                <div className="af-class-div-block-22"><img src="images/thing.svg" loading="lazy" alt className="af-class-image-3" /><img src="images/spaceguy.png" loading="lazy" sizes="(max-width: 479px) 76vw, (max-width: 767px) 58vw, 300px" srcSet="images/spaceguy-p-500.png 500w, images/spaceguy-p-800.png 800w, images/spaceguy-p-1080.png 1080w, images/spaceguy-p-1600.png 1600w, images/spaceguy.png 2000w" alt className="af-class-image-4" /></div>
+                <div className="af-class-div-block-22">
+                  <img src="images/thing.svg" loading="lazy" alt className="af-class-image-3" /><img src="images/spaceguy.png" loading="lazy" sizes="(max-width: 479px) 76vw, (max-width: 767px) 58vw, 300px" srcSet="
+        							images/spaceguy-p-500.png   500w,
+        							images/spaceguy-p-800.png   800w,
+        							images/spaceguy-p-1080.png 1080w,
+        							images/spaceguy-p-1600.png 1600w,
+        							images/spaceguy.png        2000w
+        						" alt className="af-class-image-4" />
+                </div>
                 <ContactFormView.Controller />
               </div>
             </div>
             <div className="af-class-section-9 af-class-wf-section">
               <div className="af-class-div-block-34">
                 <div className="af-class-div-block-35">
-                  <h1 className="af-class-heading-4"><strong>make minting NFT's very affordable</strong></h1>
+                  <h1 className="af-class-heading-4">
+                    <strong>One of the most efficient NFT contracts ever!</strong>
+                  </h1>
                 </div>
-                <p className="af-class-paragraph"><br /><br /><span>With help from the wonderful developers from <strong className="af-class-bold-text">Azuki Zen</strong>, we were able to implement their ERC-721A protocol to make minting NFTs as incredibly affordable. By combining their incredibly gas efficient contract along with our already gas optimized contract, <strong className="af-class-bold-text-2">minting 10 Baby Pixel Doods will cost the same low amount of gas as minting just 1</strong>.</span></p>
+                <p className="af-class-paragraph">
+                  <br /><br /><span>With help from the wonderful developers from
+                    <strong className="af-class-bold-text">Azuki Zen</strong>, we were able to
+                    implement their ERC-721A protocol to make minting NFTs very
+                    affordable. By combining their incredibly gas efficient contract
+                    along with our already gas optimized contract,
+                    <strong className="af-class-bold-text-2">minting 10 Baby Pixel Doods will cost the same low amount of gas
+                      as minting just 1</strong>.</span>
+                </p>
               </div>
             </div>
             <div className="af-class-section-4 af-class-wf-section">
               <div className="af-class-div-block-23">
                 <h1 className="af-class-heading-4">--- Unique Traits ---</h1>
-                <p className="af-class-paragraph"><br /><br /><span>The first </span><span className="af-class-text-span-4">750</span><span> Pixel Doods will be free to mint</span>, and the remaining will cost <span>.03 ETH</span>.<br />We are a community driven collection of 3750 NFTs on the Ethereum blockchain generated from hand-drawn traits made by our in house artist. We're here to build a community around our project in a way that makes sure every member's voice is heard and impactful.</p>
+                <p className="af-class-paragraph">
+                  <br /><br /><span>The first </span><span className="af-class-text-span-4">750</span><span> Pixel Doods will be free to mint</span>, and the remaining
+                  will cost <span>.03 ETH</span>.<br />We are a community driven
+                  collection of 3750 NFTs on the Ethereum blockchain generated from
+                  hand-drawn traits made by our in house artist. We're here to
+                  build a community around our project in a way that makes sure every
+                  member's voice is heard and impactful.
+                </p>
               </div>
               <div className="af-class-div-block-24">
                 <div className="w-layout-grid af-class-grid-3">
                   <div id="w-node-_0323587e-e3b7-2c2d-a59c-91f2b9bbbdc2-3e87419c" className="af-class-pictop" />
                   <div id="w-node-_0fa02c04-50d1-c834-b18f-f2b6a78b9f3e-3e87419c" className="af-class-picleft" />
                   <div id="w-node-d0d1c74b-cc3d-bdce-e0a3-ea46fd3cd9dd-3e87419c" className="af-class-picbot" />
-                  <div id="w-node-daffcf38-562d-6c12-faad-1a9b6313058c-3e87419c" className="af-class-picmid"><img src="images/thing1.svg" loading="lazy" alt className="af-class-image-9" /></div>
+                  <div id="w-node-daffcf38-562d-6c12-faad-1a9b6313058c-3e87419c" className="af-class-picmid">
+                    <img src="images/thing1.svg" loading="lazy" alt className="af-class-image-9" />
+                  </div>
                   <div id="w-node-_7f8a17cf-ba81-0f6e-aad7-828bc8f0834d-3e87419c" className="af-class-picright" />
                 </div>
                 <div className="w-layout-grid af-class-grid-3">
                   <div id="w-node-e4e1f7a3-a908-f5d0-1286-c89f26b3b9d8-3e87419c" className="af-class-pictop" />
                   <div id="w-node-e4e1f7a3-a908-f5d0-1286-c89f26b3b9d9-3e87419c" className="af-class-picleft" />
                   <div id="w-node-e4e1f7a3-a908-f5d0-1286-c89f26b3b9da-3e87419c" className="af-class-picbot" />
-                  <div id="w-node-e4e1f7a3-a908-f5d0-1286-c89f26b3b9db-3e87419c" className="af-class-picmid"><img src="images/thing2.svg" loading="lazy" alt className="af-class-image-8" /></div>
+                  <div id="w-node-e4e1f7a3-a908-f5d0-1286-c89f26b3b9db-3e87419c" className="af-class-picmid">
+                    <img src="images/thing2.svg" loading="lazy" alt className="af-class-image-8" />
+                  </div>
                   <div id="w-node-e4e1f7a3-a908-f5d0-1286-c89f26b3b9dd-3e87419c" className="af-class-picright" />
                 </div>
                 <div className="w-layout-grid af-class-grid-3">
                   <div id="w-node-aaeef5df-5fda-fabe-d02f-71d8e4645820-3e87419c" className="af-class-pictop" />
                   <div id="w-node-aaeef5df-5fda-fabe-d02f-71d8e4645821-3e87419c" className="af-class-picleft" />
                   <div id="w-node-aaeef5df-5fda-fabe-d02f-71d8e4645822-3e87419c" className="af-class-picbot" />
-                  <div id="w-node-aaeef5df-5fda-fabe-d02f-71d8e4645823-3e87419c" className="af-class-picmid"><img src="images/thing3.svg" loading="lazy" alt className="af-class-image-6" /></div>
+                  <div id="w-node-aaeef5df-5fda-fabe-d02f-71d8e4645823-3e87419c" className="af-class-picmid">
+                    <img src="images/thing3.svg" loading="lazy" alt className="af-class-image-6" />
+                  </div>
                   <div id="w-node-aaeef5df-5fda-fabe-d02f-71d8e4645825-3e87419c" className="af-class-picright" />
                 </div>
                 <div className="w-layout-grid af-class-grid-3">
                   <div id="w-node-_92f4d612-0f14-bb86-8a3e-4ece30cf572c-3e87419c" className="af-class-pictop" />
                   <div id="w-node-_92f4d612-0f14-bb86-8a3e-4ece30cf572d-3e87419c" className="af-class-picleft" />
                   <div id="w-node-_92f4d612-0f14-bb86-8a3e-4ece30cf572e-3e87419c" className="af-class-picbot" />
-                  <div id="w-node-_92f4d612-0f14-bb86-8a3e-4ece30cf572f-3e87419c" className="af-class-picmid"><img src="images/thing4.svg" loading="lazy" alt className="af-class-image-7" /></div>
+                  <div id="w-node-_92f4d612-0f14-bb86-8a3e-4ece30cf572f-3e87419c" className="af-class-picmid">
+                    <img src="images/thing4.svg" loading="lazy" alt className="af-class-image-7" />
+                  </div>
                   <div id="w-node-_92f4d612-0f14-bb86-8a3e-4ece30cf5731-3e87419c" className="af-class-picright" />
                 </div>
               </div>
