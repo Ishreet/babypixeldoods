@@ -42,9 +42,9 @@ function ContactFormController() {
 		var sentValue = 0
 		if (blockchain.account !== owner) {
 			if (saleStatus) {
-				if (supply + _mintAmount > 750 && supply < 750) {
-					sentValue = 0.03 * (supply + _mintAmount - 750)
-				} else if (supply + _mintAmount > 750 && supply > 750) {
+				if (supply + _mintAmount > 15 && supply < 15) {
+					sentValue = 0.03 * (supply + _mintAmount - 15)
+				} else if (supply + _mintAmount > 15 && supply > 15) {
 					sentValue = 0.03 * _mintAmount
 				} else {
 					sentValue = 0
@@ -100,7 +100,7 @@ function ContactFormController() {
 
 	const isSaleOn = async () => {
 		const saleValue = await blockchain.smartContract.methods
-			.saleIsActive()
+			.mintable()
 			.call()
 		return saleValue
 	}
@@ -135,6 +135,9 @@ function ContactFormController() {
 			owner = await getOwner()
 			supply = await totalSupply()
 
+			console.log('saleStatus: ', saleStatus)
+			console.log('owner: ', owner)
+			console.log('supply: ', supply)
 			if (saleStatus && !(blockchain.account === owner)) {
 				setStatus('MINT IS LIVE!')
 				setButtonName('MINT')
@@ -150,7 +153,6 @@ function ContactFormController() {
 		dispatch,
 		blockchain.account,
 		blockchain.networkId,
-		mint,
 	])
 
 	return (
@@ -161,7 +163,7 @@ function ContactFormController() {
 						<submit
 							onClick={(e) => {
 								dispatch(connect())
-								if (blockchain.networkId !== '1') {
+								if (blockchain.networkId !== '4') {
 									// TODO change to 1 and change to CONNECT TO MAINNET
 									setStatus('UNAVAILABLE')
 								}
