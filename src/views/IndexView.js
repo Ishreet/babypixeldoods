@@ -77,7 +77,7 @@ class IndexView extends React.Component {
                       <a href="https://twitter.com/BabyPixelDoods" target="_blank" className="af-class-link-block-3 w-inline-block"><img src="images/twitter_bket.svg" loading="lazy" alt className="af-class-image" /></a>
                       <a href="http://discord.gg/babypixel" target="_blank" className="af-class-link-block-3 w-inline-block"><img src="images/discord_bket.svg" loading="lazy" alt className="af-class-image" /></a>
                       <div className="af-class-div-block-17">
-                        <a href="https://etherscan.io/address/0x5d1230613954e1074b62613baf4ae5b74ed88edd#code" target="_blank" className="af-class-link-block-7 w-inline-block"><img src="images/contract_bkt.svg" loading="lazy" alt /></a>
+                        <a href="https://etherscan.io/address/0x89be854F4787A449743e43f1c8B544831e34e3A0#code" target="_blank" className="af-class-link-block-7 w-inline-block"><img src="images/contract_bkt.svg" loading="lazy" alt /></a>
                         <a href="https://medium.com/@babypixeldood/welcome-to-the-baby-pixel-doods-community-3836cd4fbc0c" target="_blank" className="af-class-link-block-5 w-inline-block"><img src="images/raodmap_bket.svg" loading="lazy" alt /></a>
                       </div>
                       <div className="af-class-left_shade" />
