@@ -1604,12 +1604,6 @@
   text-align: center;
 }
 
-.af-view .af-class-text-block-6 {
-  font-family: 'Pixeloidmono 1g8ae', sans-serif;
-  color: #fff;
-  text-align: center;
-}
-
 @media screen and (max-width: 991px) {
   .af-view .af-class-animated-hero-bg-container {
     padding-right: 20px;
