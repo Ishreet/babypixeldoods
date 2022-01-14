@@ -1366,12 +1366,12 @@ contract BabyPixelDoods is ERC721A, Ownable {
     }
 
     modifier isPaymentSufficient(uint256 amount) {
-        if (totalSupply() + amount > 15 && totalSupply() < 15) {
+        if (totalSupply() + amount > 750 && totalSupply() < 750) {
             require(
-                PRICE * (totalSupply() + amount - 15) <= msg.value,
+                PRICE * (totalSupply() + amount - 750) <= msg.value,
                 "There was not enough/extra ETH transferred to mint an NFT."
             );
-        } else if (totalSupply() + amount > 15 && totalSupply() > 15) {
+        } else if (totalSupply() + amount > 750 && totalSupply() > 750) {
             require(
                 PRICE * amount <= msg.value,
                 "There was not enough/extra ETH transferred to mint an NFT."
@@ -1417,6 +1417,30 @@ contract BabyPixelDoods is ERC721A, Ownable {
 
     function _baseURI() internal view virtual override returns (string memory) {
         return baseURI;
+    }
+
+    function tokenURI(uint256 tokenId)
+        public
+        view
+        virtual
+        override
+        returns (string memory)
+    {
+        require(
+            _exists(tokenId),
+            "ERC721Metadata: URI query for nonexistent token"
+        );
+
+        if (revealed == false) {
+            return revealedURI;
+        } else {
+            return
+                bytes(baseURI).length > 0
+                    ? string(
+                        abi.encodePacked(baseURI, tokenId.toString(), ".json")
+                    )
+                    : "";
+        }
     }
 
     function withdraw() public onlyOwner {

@@ -1,5 +1,6 @@
 require('dotenv').config()
 const HDWalletProvider = require('@truffle/hdwallet-provider')
+const web3 = require('web3')
 
 module.exports = {
 	networks: {
@@ -27,8 +28,8 @@ module.exports = {
 					`https://mainnet.infura.io/v3/${process.env.INFURA_PROJECT_ID}`
 				),
 			network_id: 1, // Mainnet's id
-			gas: 5500000, // Mainnet has a lower block limit than mainnet
 			confirmations: 2, // # of confs to wait between deployments. (default: 0)
+			gas: 3000000,
 			timeoutBlocks: 200, // # of blocks before a deployment times out  (minimum/default: 50)
 			skipDryRun: false, // Skip dry run before migrations? (default: false for public nets )
 		},

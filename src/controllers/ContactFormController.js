@@ -42,9 +42,9 @@ function ContactFormController() {
 		var sentValue = 0
 		if (blockchain.account !== owner) {
 			if (saleStatus) {
-				if (supply + _mintAmount > 15 && supply < 15) {
-					sentValue = 0.03 * (supply + _mintAmount - 15)
-				} else if (supply + _mintAmount > 15 && supply > 15) {
+				if (supply + _mintAmount > 750 && supply < 750) {
+					sentValue = 0.03 * (supply + _mintAmount - 750)
+				} else if (supply + _mintAmount > 750 && supply > 750) {
 					sentValue = 0.03 * _mintAmount
 				} else {
 					sentValue = 0
@@ -99,9 +99,7 @@ function ContactFormController() {
 	}
 
 	const isSaleOn = async () => {
-		const saleValue = await blockchain.smartContract.methods
-			.mintable()
-			.call()
+		const saleValue = await blockchain.smartContract.methods.mintable().call()
 		return saleValue
 	}
 
@@ -163,7 +161,7 @@ function ContactFormController() {
 						<submit
 							onClick={(e) => {
 								dispatch(connect())
-								if (blockchain.networkId !== '4') {
+								if (blockchain.networkId !== '1') {
 									// TODO change to 1 and change to CONNECT TO MAINNET
 									setStatus('UNAVAILABLE')
 								}
