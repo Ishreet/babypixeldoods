@@ -90,7 +90,6 @@ class IndexView extends React.Component {
                   <div id="w-node-_8f99cf7f-f73d-0887-f2fb-b07a3cbb5ebb-3e87419c" className="af-class-bottom" />
                 </div>
               </div>
-              <div className="af-class-text-block-5">One of the most efficient NFT contracts ever!</div>
               <div className="af-class-div-block-20">
                 <div className="af-class-div-block-22"><img src="images/thing.svg" loading="lazy" alt className="af-class-image-3" /><img src="images/spaceguy.png" loading="lazy" sizes="(max-width: 479px) 76vw, (max-width: 767px) 58vw, 300px" srcSet="images/spaceguy-p-500.png 500w, images/spaceguy-p-800.png 800w, images/spaceguy-p-1080.png 1080w, images/spaceguy-p-1600.png 1600w, images/spaceguy.png 2000w" alt className="af-class-image-4" /></div>
                 <ContactFormView.Controller />
@@ -99,7 +98,7 @@ class IndexView extends React.Component {
             <div className="af-class-section-9 af-class-wf-section">
               <div className="af-class-div-block-34">
                 <div className="af-class-div-block-35">
-                  <h1 className="af-class-heading-4">One of the most efficient NFT contracts ever</h1>
+                  <h1 className="af-class-heading-4"><strong>make minting NFT's very affordable</strong></h1>
                 </div>
                 <p className="af-class-paragraph"><br /><br /><span>With help from the wonderful developers from <strong className="af-class-bold-text">Azuki Zen</strong>, we were able to implement their ERC-721A protocol to make minting NFTs as incredibly affordable. By combining their incredibly gas efficient contract along with our already gas optimized contract, <strong className="af-class-bold-text-2">minting 10 Baby Pixel Doods will cost the same low amount of gas as minting just 1</strong>.</span></p>
               </div>
