@@ -36,6 +36,7 @@ export const connect = () => {
 		dispatch(connectRequest())
 		if (window.ethereum) {
 			let web3 = new Web3(window.ethereum)
+			console.log('web3', window.ethereum)
 			try {
 				const accounts = await window.ethereum.request({
 					method: 'eth_requestAccounts',
